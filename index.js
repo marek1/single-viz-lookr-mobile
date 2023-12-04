@@ -3,12 +3,12 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Override value",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         htmlSubtitle: {
             type: "string",
             label: "Set subtitle",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         conditionTxt: {
             type: "string",
