@@ -85,7 +85,7 @@ looker.plugins.visualizations.add({
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
         //element.innerHTML += "<div style='font-size: 2rem;'>" + config.htmlSubtitle + "</div>";
-        element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like + "</div>";
+        element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like[0] + "</div>";
         element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.measure_like + "</div>";
 
         doneRendering();
