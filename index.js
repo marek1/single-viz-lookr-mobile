@@ -73,9 +73,14 @@ looker.plugins.visualizations.add({
         element.innerHTML = htmlFormatted;
 
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
+            element.style.color = "white";
             element.style.backgroundColor = "red";
+        } else {
+            element.style.color = "black";
+            element.style.backgroundColor = "white";
         }
 
+        element.style.fontFamily = 'sans-serif';
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
