@@ -1,10 +1,5 @@
 looker.plugins.visualizations.add({
     options: {
-        html_template: {
-            type: "string",
-            label: "HTML Template",
-            default: `<div style="text-align: center; color: #000; font-size: 5rem; font-weight: 700;">{{ value }}</div>`
-        },
         conditionTxt: {
             type: "string",
             label: "Alert when below",
