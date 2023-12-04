@@ -1,2 +1,2 @@
-# single-biz-lookr-mobile
+# single-viz-lookr-mobile
 A single visualization for Lookr
