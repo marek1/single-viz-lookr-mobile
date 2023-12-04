@@ -25,10 +25,16 @@ looker.plugins.visualizations.add({
 
         const firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
 
-        const htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
+        let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
         const htmlTemplate = config && config.html_template || this.options.html_template.default;
 
+        if (!isNaN(htmlForCell)) {
+            htmlForCell = 1;
+        }
+
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
+
+        //
 
         element.innerHTML = htmlFormatted;
 
