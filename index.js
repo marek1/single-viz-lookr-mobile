@@ -3,7 +3,7 @@ looker.plugins.visualizations.add({
         html_template: {
             type: "string",
             label: "HTML Template",
-            default: `<div style="text-align: center; background-color: red; color: #5A2FC2; font-size: 5rem; font-weight: 700;">{{ value }}</div>`
+            default: `<div style="text-align: center; color: #5A2FC2; font-size: 5rem; font-weight: 700;">{{ value }}</div>`
         },
         conditionTxt: {
             type: "string",
@@ -33,19 +33,20 @@ looker.plugins.visualizations.add({
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
         const htmlTemplate = config && config.html_template || this.options.html_template.default;
 
+        let isNumber = false;
         if (!isNaN(htmlForCell)) {
+            isNumber = true;
             htmlForCell = parseInt(htmlForCell);
-
         }
 
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
         element.innerHTML = htmlFormatted;
 
-        if (parseInt(config.conditionTxt) < htmlForCell) {
-            htmlFormatted.style.backgroundColor = "red";
+        if (isNumber && parseInt(config.conditionTxt) < htmlForCell) {
+            element.style.backgroundColor = "red";
         } else {
-            htmlFormatted.style.backgroundColor = "green";
+            element.style.backgroundColor = "green";
         }
 
 
