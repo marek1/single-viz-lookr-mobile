@@ -75,6 +75,8 @@ looker.plugins.visualizations.add({
 
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
+        element.style.textAlign = "center";
+        element.innerHTML += " hi";
 
         doneRendering();
     }
