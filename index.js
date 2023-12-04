@@ -3,12 +3,36 @@ looker.plugins.visualizations.add({
         html_template: {
             type: "string",
             label: "HTML Template",
-            default: `<div style="text-align: center; color: #5A2FC2; font-size: 5rem; font-weight: 700;">{{ value }}</div>`
+            default: `<div style="text-align: center; color: #000; font-size: 5rem; font-weight: 700;">{{ value }}</div>`
         },
         conditionTxt: {
             type: "string",
             label: "Alert when below",
-            placeholder: "x"
+            placeholder: "0"
+        },
+        textColor: {
+            type: "string",
+            label: "Text Color",
+            display: "select",
+            values: [
+                {"Black": "#000"},
+                {"White": "#FFF"},
+                {"Blue": "#0040ff"},
+                {"Green": "#1ca616"},
+                {"Orange": "#ff9800"}
+            ],
+            default: "Black"
+        },
+        fontSize: {
+            type: "string",
+            label: "Font Size",
+            display: "select",
+            values: [
+                {"Big": "20rem"},
+                {"Med": "10rem"},
+                {"Small": "5rem"}
+            ],
+            default: "Big"
         }
     },
 
@@ -49,6 +73,8 @@ looker.plugins.visualizations.add({
             element.style.backgroundColor = "green";
         }
 
+        element.style.color = config.textColor;
+        element.style.fontSize = config.fontSize;
 
         doneRendering();
     }
