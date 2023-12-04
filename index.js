@@ -1,9 +1,14 @@
 looker.plugins.visualizations.add({
     options: {
-        html_template: {
+        htmlTemplate: {
             type: "string",
-            label: "HTML Template",
-            default: `<div>{{ value }}</div>`
+            label: "Override value",
+            default: `{{ value }}`
+        },
+        htmlSubtitle: {
+            type: "string",
+            label: "Set subtitle",
+            default: `{{ value }}`
         },
         conditionTxt: {
             type: "string",
@@ -25,7 +30,7 @@ looker.plugins.visualizations.add({
         },
         fontSize: {
             type: "string",
-            label: "Font Size",
+            label: "Text Size",
             display: "select",
             values: [
                 {"Big": "20rem"},
@@ -55,7 +60,7 @@ looker.plugins.visualizations.add({
         const firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
 
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
-        const htmlTemplate = config && config.html_template || this.options.html_template.default;
+        const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
         if (!isNaN(htmlForCell)) {
@@ -76,7 +81,7 @@ looker.plugins.visualizations.add({
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
-        element.innerHTML += "<div style='font-size: 2rem;'>" + firstRow[qFields.dimension_like] + "</div>";
+        element.innerHTML += "<div style='font-size: 2rem;'>" + config.htmlSubtitle + "</div>";
 
         doneRendering();
     }
