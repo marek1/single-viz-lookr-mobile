@@ -7,12 +7,12 @@ looker.plugins.visualizations.add({
         },
         measureText: {
             type: "string",
-            label: "Overwrite measure",
+            label: "Overwrite label",
             default: `{{ value }}`
         },
         conditionTxt: {
             type: "string",
-            label: "Alert when below",
+            label: "Indicate when below",
             placeholder: "0"
         },
         textColor: {
@@ -20,13 +20,24 @@ looker.plugins.visualizations.add({
             label: "Text Color",
             display: "select",
             values: [
-                {"Black": "#000"},
-                {"White": "#FFF"},
-                {"Blue": "#0040ff"},
-                {"Green": "#1ca616"},
-                {"Orange": "#ff9800"}
+                {"Black": "#333333"},
+                {"White": "#F7F7F7"},
+                {"Blue": "#0996B3"},
+                {"Grey": "#E4E4E4"},
+                {"Orange": "#FF6600"}
             ],
             default: "Black"
+        },
+        verticalAlign:{
+            type: "string",
+            label: "Text Alignment",
+            display: "select",
+            values: [
+                {"Center": "baseline"},
+                {"Top": "text-top"},
+                {"Bottom": "text-bottom"}
+            ],
+            default: "Center"
         },
         fontSize: {
             type: "string",
@@ -37,7 +48,7 @@ looker.plugins.visualizations.add({
                 {"Med": "10rem"},
                 {"Small": "5rem"}
             ],
-            default: "Big"
+            default: "Med"
         }
     },
 
@@ -73,17 +84,18 @@ looker.plugins.visualizations.add({
         element.innerHTML = htmlFormatted;
 
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
-            element.style.color = "white";
+            element.style.color = "#F7F7F7";
             element.style.backgroundColor = "red";
         } else {
-            element.style.color = "black";
-            element.style.backgroundColor = "white";
+            element.style.color = "#333333";
+            element.style.backgroundColor = "#F7F7F7";
         }
 
         element.style.fontFamily = 'Georgia, serif';
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
+        element.sytle.vertical-align = config.verticalAlign;
 
         if (config.measureText) {
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
