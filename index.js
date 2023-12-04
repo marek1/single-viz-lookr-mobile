@@ -2,12 +2,12 @@ looker.plugins.visualizations.add({
     options: {
         htmlTemplate: {
             type: "string",
-            label: "Override value",
+            label: "Overwrite value",
             default: `{{ value }}`
         },
-        htmlSubtitle: {
+        measureText: {
             type: "string",
-            label: "Set subtitle",
+            label: "Overwrite measure",
             default: `{{ value }}`
         },
         conditionTxt: {
@@ -80,15 +80,16 @@ looker.plugins.visualizations.add({
             element.style.backgroundColor = "white";
         }
 
-        element.style.fontFamily = 'sans-serif';
+        element.style.fontFamily = 'Georgia, serif';
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
-        //element.innerHTML += "<div style='font-size: 2rem;'>" + config.htmlSubtitle + "</div>";
-        //element.innerHTML += "<div style='font-size: 2rem;'>yo</div>";
-        //element.innerHTML += "<div style='font-size: 2rem;'>l: " + qFields.dimension_like[0].name + "</div>";
-        element.innerHTML += "<div style='font-size: 2rem;'>m: " + qFields.measure_like[0].label_short + "</div>";
-        //element.innerHTML += "<div style='font-size: 2rem;'>do</div>";
+
+        if (config.measureText) {
+            element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
+        } else {
+            element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.measure_like[0].label_short + "</div>";
+        }
 
         doneRendering();
     }
