@@ -86,9 +86,9 @@ looker.plugins.visualizations.add({
         element.style.textAlign = "center";
         //element.innerHTML += "<div style='font-size: 2rem;'>" + config.htmlSubtitle + "</div>";
         //element.innerHTML += "<div style='font-size: 2rem;'>yo</div>";
-        element.innerHTML += "<div style='font-size: 2rem;'>l: " + qFields.dimension_like[0].name + "</div>";
-        //element.innerHTML += "<div style='font-size: 2rem;'>m: " + qFields.measure_like[0].name + "</div>";
-        element.innerHTML += "<div style='font-size: 2rem;'>do</div>";
+        //element.innerHTML += "<div style='font-size: 2rem;'>l: " + qFields.dimension_like[0].name + "</div>";
+        element.innerHTML += "<div style='font-size: 2rem;'>m: " + qFields.measure_like[0].name + "</div>";
+        //element.innerHTML += "<div style='font-size: 2rem;'>do</div>";
 
         doneRendering();
     }
