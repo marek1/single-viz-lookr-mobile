@@ -76,7 +76,7 @@ looker.plugins.visualizations.add({
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
-        element.innerHTML += " hi";
+        element.innerHTML += "<div style='font-size: 2rem;'>" + firstRow[qFields.dimension_like] + "</div>";
 
         doneRendering();
     }
