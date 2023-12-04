@@ -58,9 +58,10 @@ looker.plugins.visualizations.add({
             htmlForCell = parseInt(htmlForCell);
         }
 
-        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
+        //const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
+        //element.innerHTML = htmlFormatted;
 
-        element.innerHTML = htmlFormatted;
+        element.innerHTML = htmlForCell;
 
         if (isNumber && parseInt(config.conditionTxt) < htmlForCell) {
             element.style.backgroundColor = "red";
