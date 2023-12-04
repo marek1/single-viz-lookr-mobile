@@ -72,10 +72,8 @@ looker.plugins.visualizations.add({
 
         element.innerHTML = htmlFormatted;
 
-        if (isNumber && parseInt(config.conditionTxt) < htmlForCell) {
+        if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.backgroundColor = "red";
-        } else {
-            element.style.backgroundColor = "green";
         }
 
         element.style.color = config.textColor;
