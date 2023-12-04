@@ -1,5 +1,10 @@
 looker.plugins.visualizations.add({
     options: {
+        html_template: {
+            type: "string",
+            label: "HTML Template",
+            default: `<div>{{ value }}</div>`
+        },
         conditionTxt: {
             type: "string",
             label: "Alert when below",
@@ -58,10 +63,9 @@ looker.plugins.visualizations.add({
             htmlForCell = parseInt(htmlForCell);
         }
 
-        //const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
-        //element.innerHTML = htmlFormatted;
+        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
-        element.innerHTML = htmlForCell;
+        element.innerHTML = htmlFormatted;
 
         if (isNumber && parseInt(config.conditionTxt) < htmlForCell) {
             element.style.backgroundColor = "red";
