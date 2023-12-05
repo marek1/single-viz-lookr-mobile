@@ -80,17 +80,13 @@ looker.plugins.visualizations.add({
 
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
-        let isNumber = false;
 
         if (!isNaN(htmlForCell1))  {
-            isNumber = true;
             htmlForCell = parseInt(htmlForCell1);
         } else if (!isNaN(htmlForCell2)) {
-            isNumber = true;
             htmlForCell = parseInt(htmlForCell2);
         } else {
-            isNumber = false;
-            htmlForCell = typeof (htmlForCell1) !== undefined ? htmlForCell1 : htmlForCell2;
+            htmlForCell = htmlForCell1 && typeof (htmlForCell1) !== undefined ? htmlForCell1 : htmlForCell2;
         }
 
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
