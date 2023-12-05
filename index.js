@@ -73,13 +73,12 @@ looker.plugins.visualizations.add({
 
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.color = "#F7F7F7";
-            element.style.backgroundColor = "red";
+            element.style.backgroundColor = "#FF0000";
         } else {
             element.style.color = "#333333";
             element.style.backgroundColor = "#F7F7F7";
         }
 
-        element.style.fontFamily = 'Georgia, serif';
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
