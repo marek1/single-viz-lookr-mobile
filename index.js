@@ -21,14 +21,14 @@ looker.plugins.visualizations.add({
             label: "Value: Format Digits",
             display: "select",
             values: [
-                {0: 0},
-                {1: 1},
-                {2: 2},
-                {3: 3},
-                {4: 4},
-                {5: 5},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: 0
+            default: "0"
         },
         addedUnit: {
             type: "string",
@@ -100,7 +100,7 @@ looker.plugins.visualizations.add({
             htmlForCell = htmlForCell.toLocaleString(
                 config.formatValue, // leave undefined to use the visitor's browser
                 // locale or a string like 'en-US' to override it.
-                { minimumFractionDigits: config.formatDigits }
+                { minimumFractionDigits: parseInt(config.formatDigits) }
             );
         }
 
