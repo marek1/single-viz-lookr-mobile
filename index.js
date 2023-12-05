@@ -73,7 +73,7 @@ looker.plugins.visualizations.add({
             htmlForCell = parseInt(htmlForCell);
         }
 
-        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell) +;
+        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
         element.innerHTML = htmlFormatted + "<div style='float: left;'>" + config.addedUnit + "</div>";
 
