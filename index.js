@@ -120,6 +120,8 @@ looker.plugins.visualizations.add({
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
 
+        // Adding label
+
         if (config.labelText) {
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.labelText + "</div>";
         } else {
@@ -127,14 +129,22 @@ looker.plugins.visualizations.add({
             element.innerHTML += "<div style='font-size: 2rem;'>" + labelText + "</div>";
         }
 
+        // Adding horizontal line
 
-        // Adding stuff
+        element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
+
+        // Adding further data
+
         element.innerHTML += "<div style='width:100%; '>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>YOY</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>MOM</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MOM</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>-</div>";
+        element.innerHTML += "</div>"
+        element.innerHTML += "<div style='width:100%; '>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>10%</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>20%</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         element.innerHTML += "</div>"
-
 
         doneRendering();
     }
