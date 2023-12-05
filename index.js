@@ -58,7 +58,6 @@ looker.plugins.visualizations.add({
         this.clearErrors();
 
         const firstRow = data[0];
-        const secondRow = data[1];
         const qFields = queryResponse.fields;
 
         if (qFields.dimension_like.length === 0 &&
@@ -73,8 +72,8 @@ looker.plugins.visualizations.add({
         let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
         let secondCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
 
-        let thirdCell = secondRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
-        let fourthCell = secondRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
+        let thirdCell = firstRow[0][qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
+        let fourthCell = firstRow[0][qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
 
 
         let htmlForCell = "";
