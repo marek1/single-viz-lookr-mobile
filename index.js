@@ -82,9 +82,9 @@ looker.plugins.visualizations.add({
         let htmlForCell2 = LookerCharts.Utils.filterableValueForCell(secondCell);
 
         element.innerHTML = "1/1 : " + LookerCharts.Utils.filterableValueForCell(firstCell);
-        element.innerHTML += "1/2 : " + LookerCharts.Utils.filterableValueForCell(secondCell);
-        element.innerHTML = "2/1 : " + LookerCharts.Utils.filterableValueForCell(thirdCell);
-        element.innerHTML += "2/2 : " + LookerCharts.Utils.filterableValueForCell(fourthCell);
+        element.innerHTML += " 1/2 : " + LookerCharts.Utils.filterableValueForCell(secondCell);
+        element.innerHTML += " 2/1 : " + LookerCharts.Utils.filterableValueForCell(thirdCell);
+        element.innerHTML += " 2/2 : " + LookerCharts.Utils.filterableValueForCell(fourthCell);
 /*
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
