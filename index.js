@@ -3,12 +3,12 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Overwrite value",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         measureText: {
             type: "string",
             label: "Overwrite label",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         conditionTxt: {
             type: "string",
