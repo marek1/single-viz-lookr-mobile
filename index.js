@@ -70,7 +70,7 @@ looker.plugins.visualizations.add({
         let isNumber = false;
         if (!isNaN(htmlForCell)) {
             isNumber = true;
-            htmlForCell = parseInt(htmlForCell);
+            //htmlForCell = parseInt(htmlForCell);
         }
 
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
