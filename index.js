@@ -204,7 +204,7 @@ looker.plugins.visualizations.add({
         }
         if (targetValue > 0) {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + " % </div>";
-        } else if (momValue < 0) {
+        } else if (targetValue < 0) {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + " % </div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
