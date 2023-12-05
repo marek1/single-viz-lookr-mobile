@@ -2,22 +2,27 @@ looker.plugins.visualizations.add({
     options: {
         htmlTemplate: {
             type: "string",
-            label: "Overwrite value",
+            label: "Value: add unit",
             default: `<div>{{ value }}</div>`
+        },
+        addedUnit: {
+            type: "string",
+            label: "Value: Overwrite",
+            default: ``
         },
         measureText: {
             type: "string",
-            label: "Overwrite label",
+            label: "Label: Overwrite",
             default: `<div>{{ value }}</div>`
         },
         conditionTxt: {
             type: "string",
-            label: "Indicate when below",
+            label: "Alert: Indicate when below",
             placeholder: "0"
         },
         textColor: {
             type: "string",
-            label: "Text Color",
+            label: "Text: Color",
             display: "select",
             values: [
                 {"Black": "#333333"},
@@ -30,7 +35,7 @@ looker.plugins.visualizations.add({
         },
         fontSize: {
             type: "string",
-            label: "Text Size",
+            label: "Text: Size",
             display: "select",
             values: [
                 {"Big": "20rem"},
@@ -70,7 +75,7 @@ looker.plugins.visualizations.add({
 
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
-        element.innerHTML = htmlFormatted;
+        element.innerHTML = htmlFormatted + config.addedUnit;
 
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.color = "#F7F7F7";
