@@ -72,7 +72,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "YOY : which index",
-            default: `{{ value }}`
+            default: "0"
         }
     },
 
