@@ -79,7 +79,13 @@ looker.plugins.visualizations.add({
         },
         yoyIndex: {
             type: "string",
-            label: "YOY : which index",
+            label: "YOY : Select index ",
+            section: "Subs",
+            default: "0"
+        },
+        momIndex: {
+            type: "string",
+            label: "MOM : Select index",
             section: "Subs",
             default: "0"
         }
@@ -146,15 +152,21 @@ looker.plugins.visualizations.add({
 
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
-        // Adding further data
+        // Adding
+        // YOY:
         let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"]);
         if (isNaN(yoyValue)) {
             yoyValue = 0;
         } else {
             yoyValue = parseFloat(yoyValue * 100).toFixed(2)
         }
-       // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
-       // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
+        // MOM
+        let momValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.momIndex].name ? qFields.measure_like[config.momIndex].name : "-"]);
+        if (isNaN(momValue)) {
+            momValue = 0;
+        } else {
+            momValue = parseFloat(momValue * 100).toFixed(2)
+        }
 
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
@@ -169,8 +181,13 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         }
-
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
+        if (momValue > 0) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + momValue + " % </div>";
+        } else if (momValue < 0) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + momValue + " % </div>";
+        } else {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
+        }
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "</div>"
 
