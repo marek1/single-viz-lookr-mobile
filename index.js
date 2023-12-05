@@ -3,7 +3,7 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
-            default: `<div>{{ value }}</div>`
+            default: `{{ value }}`
         },
         formatValue: {
             type: "string",
@@ -38,7 +38,7 @@ looker.plugins.visualizations.add({
         labelText: {
             type: "string",
             label: "Label: Overwrite",
-            default: `<div>{{ value }}</div>`
+            default: `{{ value }}`
         },
         conditionTxt: {
             type: "string",
@@ -68,6 +68,11 @@ looker.plugins.visualizations.add({
                 {"Small": "5rem"}
             ],
             default: "Med"
+        },
+        yoyIndex: {
+            type: "string",
+            label: "YOY : which index",
+            default: `{{ value }}`
         }
     },
 
@@ -88,7 +93,6 @@ looker.plugins.visualizations.add({
         }
 
         let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
-
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
@@ -134,16 +138,17 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
         // Adding further data
+        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[config.yoyIndex].name : qFields.measure_like[config.yoyIndex].name]);
 
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MOM</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>-</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>10%</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>20%</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>" + yoyValue + "</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "</div>"
 
         doneRendering();
