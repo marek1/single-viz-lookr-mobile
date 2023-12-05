@@ -82,12 +82,6 @@ looker.plugins.visualizations.add({
             label: "YOY : which index",
             section: "Subs",
             default: "0"
-        },
-        yoyUnit: {
-            type: "string",
-            label: "YOY : which index",
-            section: "Subs",
-            default: "0"
         }
     },
 
@@ -154,6 +148,7 @@ looker.plugins.visualizations.add({
 
         // Adding further data
         let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
+        yoyValue = parseFloat(LookerCharts.Utils.filterableValueForCell(yoyValue) * 100).toFixed(2)
        // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
        // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
 
@@ -163,7 +158,9 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>" + parseFloat(LookerCharts.Utils.filterableValueForCell(yoyValue) * 100).toFixed(2) + " %</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>" +
+            + yoyValue > 0 ? "<div style='color:green;'> ▲ </div>" : "" +
+            + yoyValue + " %</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "</div>"
