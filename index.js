@@ -35,7 +35,7 @@ looker.plugins.visualizations.add({
             label: "Value: Add unit",
             default: ``
         },
-        measureText: {
+        labelText: {
             type: "string",
             label: "Label: Overwrite",
             default: `<div>{{ value }}</div>`
@@ -120,12 +120,23 @@ looker.plugins.visualizations.add({
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
 
-        if (config.measureText) {
-            element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
+        if (config.labelText) {
+            element.innerHTML += "<div style='font-size: 2rem;'>" + config.labelText + "</div>";
         } else {
-            let text =  qFields.dimension_like.length > 0 ? qFields.dimension_like[0].label_short : qFields.measure_like[0].label_short;
-            element.innerHTML += "<div style='font-size: 2rem;'>" + text + "</div>";
+            let labelText =  qFields.dimension_like.length > 0 ? qFields.dimension_like[0].label_short : qFields.measure_like[0].label_short;
+            element.innerHTML += "<div style='font-size: 2rem;'>" + labelText + "</div>";
         }
+
+
+        // Adding stuff
+        element.innerHTML += "<table>";
+        element.innerHTML += "<tr>";
+        element.innerHTML += "<td>YOY</td>";
+        element.innerHTML += "<td>MoM</td>";
+        element.innerHTML += "<td>-</td>";
+        element.innerHTML += "</tr>";
+        element.innerHTML += "</table>"
+
 
         doneRendering();
     }
