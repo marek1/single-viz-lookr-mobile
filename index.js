@@ -147,11 +147,11 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
         // Adding further data
-        let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
+        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"]);
         if (isNaN(yoyValue)) {
             yoyValue = 0;
         } else {
-            yoyValue = parseFloat(LookerCharts.Utils.filterableValueForCell(yoyValue) * 100).toFixed(2)
+            yoyValue = parseFloat(yoyValue * 100).toFixed(2)
         }
        // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
        // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
