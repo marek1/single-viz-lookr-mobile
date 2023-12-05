@@ -138,7 +138,7 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
         // Adding further data
-        let yoyValue = firstRow[qFields.dimension_like[config.yoyIndex].name ? qFields.dimension_like[config.yoyIndex].name : qFields.measure_like[config.yoyIndex].name];
+        let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "no"];
         element.innerHTML += LookerCharts.Utils.filterableValueForCell(yoyValue);
 /*
         element.innerHTML += "<div style='width:100%; '>";
