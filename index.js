@@ -79,6 +79,8 @@ looker.plugins.visualizations.add({
         let htmlForCell2 = LookerCharts.Utils.filterableValueForCell(secondCell);
 
         element.innerHTML = "1 : " + htmlForCell1;
+
+        /*
         element.innerHTML = "2 : " + htmlForCell2;
 
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
@@ -115,7 +117,7 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like[0].label_short  || qFields.measure_like[0].label_short + "</div>";
         }
-
+*/
         doneRendering();
     }
 });
