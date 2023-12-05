@@ -58,6 +58,7 @@ looker.plugins.visualizations.add({
         this.clearErrors();
 
         const firstRow = data[0];
+        const secondRow = data[1];
         const qFields = queryResponse.fields;
 
         if (qFields.dimension_like.length === 0 &&
@@ -68,9 +69,14 @@ looker.plugins.visualizations.add({
             })
         }
 
-        const firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
 
-        let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
+        let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
+        let secondCell = secondRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
+
+
+        let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell || secondCell);
+
+
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
