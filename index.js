@@ -5,9 +5,33 @@ looker.plugins.visualizations.add({
             label: "Value: Overwrite",
             default: `<div>{{ value }}</div>`
         },
+        formatValue: {
+            type: "string",
+            label: "Value: Format",
+            display: "select",
+            values: [
+                {"de-DE": "de-DE"},
+                {"en-EN": "en-EN"},
+                {"en-US": "en-US"},
+            ],
+            default: "de-DE"
+        },
+        formatDigits: {
+            type: "string",
+            label: "Value: Format Digits",
+            display: "select",
+            values: [
+                {"0": 0},
+                {"1": 1},
+                {"3": 3},
+                {"4": 4},
+                {"5": 5},
+            ],
+            default: "0"
+        },
         addedUnit: {
             type: "string",
-            label: "Value: add unit",
+            label: "Value: Add unit",
             default: ``
         },
         measureText: {
@@ -71,9 +95,15 @@ looker.plugins.visualizations.add({
         if (!isNaN(htmlForCell)) {
             isNumber = true;
             htmlForCell = parseInt(htmlForCell);
+
+            htmlForCell = htmlForCell.toLocaleString(
+                config.formatValue, // leave undefined to use the visitor's browser
+                // locale or a string like 'en-US' to override it.
+                { minimumFractionDigits: config.formatDigits }
+            );
         }
 
-        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + config.addedUnit);
+        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + config.addedUnit);
 
         element.innerHTML = htmlFormatted;
 
