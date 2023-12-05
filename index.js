@@ -70,30 +70,13 @@ looker.plugins.visualizations.add({
 
 
         let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
-        let secondCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
 
-        let thirdCell = firstRow[0][qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
-        let fourthCell = firstRow[0][qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
-
-
-        let htmlForCell = "";
-        let htmlForCell1 = LookerCharts.Utils.filterableValueForCell(firstCell);
-        let htmlForCell2 = LookerCharts.Utils.filterableValueForCell(secondCell);
-
-        element.innerHTML = "1/1 : " + LookerCharts.Utils.filterableValueForCell(firstCell);
-        element.innerHTML += " 1/2 : " + LookerCharts.Utils.filterableValueForCell(secondCell);
-        element.innerHTML += " 2/1 : " + LookerCharts.Utils.filterableValueForCell(thirdCell);
-        element.innerHTML += " 2/2 : " + LookerCharts.Utils.filterableValueForCell(fourthCell);
-/*
+        let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
 
-        if (!isNaN(htmlForCell1))  {
-            htmlForCell = parseInt(htmlForCell1);
-        } else if (!isNaN(htmlForCell2)) {
-            htmlForCell = parseInt(htmlForCell2);
-        } else {
-            htmlForCell = htmlForCell1 && typeof (htmlForCell1) !== undefined ? htmlForCell1 : htmlForCell2;
+        if (!isNaN(htmlForCell))  {
+            htmlForCell = parseInt(htmlForCell);
         }
 
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
@@ -119,7 +102,7 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like[0].label_short  || qFields.measure_like[0].label_short + "</div>";
         }
-*/
+
         doneRendering();
     }
 });
