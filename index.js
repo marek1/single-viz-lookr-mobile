@@ -74,10 +74,12 @@ looker.plugins.visualizations.add({
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
+        /*
         if (!isNaN(htmlForCell)) {
             isNumber = true;
             htmlForCell = parseInt(htmlForCell);
         }
+         */
 
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
@@ -95,12 +97,12 @@ looker.plugins.visualizations.add({
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
-        element.sytle.verticalAlign = config.verticalAlign;
+        element.style.verticalAlign = config.verticalAlign;
 
         if (config.measureText) {
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
         } else {
-            element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.measure_like[0].label_short + "</div>";
+            element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like[0].label_short  || qFields.measure_like[0].label_short + "</div>";
         }
 
         doneRendering();
