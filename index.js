@@ -129,13 +129,11 @@ looker.plugins.visualizations.add({
 
 
         // Adding stuff
-        element.innerHTML += "<table>";
-        element.innerHTML += "<tr>";
-        element.innerHTML += "<td>YOY</td>";
-        element.innerHTML += "<td>MoM</td>";
-        element.innerHTML += "<td>-</td>";
-        element.innerHTML += "</tr>";
-        element.innerHTML += "</table>"
+        element.innerHTML += "<div style='width:100%'>";
+        element.innerHTML += "<div style='float: left; width:33%'>YOY</div>";
+        element.innerHTML += "<div style='float: left; width:33%'>MOM</div>";
+        element.innerHTML += "<div style='float: left; width:33%'>-</div>";
+        element.innerHTML += "</div>"
 
 
         doneRendering();
