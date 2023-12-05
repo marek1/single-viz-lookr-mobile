@@ -129,7 +129,7 @@ looker.plugins.visualizations.add({
 
 
         // Adding stuff
-        element.innerHTML += "<div style='width:100%'>";
+        element.innerHTML += "<div style='width:100%; font-size: 50%'>";
         element.innerHTML += "<div style='float: left; width:33%'>YOY</div>";
         element.innerHTML += "<div style='float: left; width:33%'>MOM</div>";
         element.innerHTML += "<div style='float: left; width:33%'>-</div>";
