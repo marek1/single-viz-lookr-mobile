@@ -161,7 +161,7 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "</div>"
-*/
+
         doneRendering();
     }
 });
