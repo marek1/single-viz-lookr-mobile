@@ -95,7 +95,7 @@ looker.plugins.visualizations.add({
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
-        element.sytle.vertical-align = config.verticalAlign;
+        element.sytle.verticalAlign = config.verticalAlign;
 
         if (config.measureText) {
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
