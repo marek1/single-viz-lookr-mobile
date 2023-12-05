@@ -160,7 +160,7 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>";
         if (yoyValue > 0) {
-            element.innerHTML += "<div style='color:green; float: left; font-size: 2rem !important '> ▲ </div>";
+            element.innerHTML += "<span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>";
         }
         element.innerHTML += yoyValue + " %</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
