@@ -80,7 +80,7 @@ looker.plugins.visualizations.add({
 
         element.innerHTML = "1 : " + htmlForCell1;
         element.innerHTML += "2 : " + htmlForCell2;
-
+/*
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
 
