@@ -73,20 +73,26 @@ looker.plugins.visualizations.add({
         let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
         let secondCell = secondRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
 
-
-        let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell || secondCell);
+        let htmlForCell = "";
+        let htmlForCell1 = LookerCharts.Utils.filterableValueForCell(firstCell);
+        let htmlForCell2 = LookerCharts.Utils.filterableValueForCell(secondCell);
 
 
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
-        /*
-        if (!isNaN(htmlForCell)) {
-            isNumber = true;
-            htmlForCell = parseInt(htmlForCell);
-        }
-         */
 
+        if (!isNaN(htmlForCell1))  {
+            isNumber = true;
+            htmlForCell = parseInt(htmlForCell1);
+        } else if (!isNaN(htmlForCell2)) {
+            isNumber = true;
+            htmlForCell = parseInt(htmlForCell2);
+        } else {
+            isNumber = false;
+            htmlForCell = htmlForCell1 || htmlForCell2;
+        }
+        
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
         element.innerHTML = htmlFormatted;
