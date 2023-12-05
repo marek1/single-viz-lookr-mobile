@@ -138,7 +138,7 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
         // Adding further data
-        let yoyValue = LookerCharts.Utils.htmlForCell(firstRow[qFields.dimensions[config.yoyIndex].name]);
+        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.dimension_like[config.yoyIndex].name]);
 
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
