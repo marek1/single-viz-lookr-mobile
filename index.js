@@ -2,12 +2,12 @@ looker.plugins.visualizations.add({
     options: {
         htmlTemplate: {
             type: "string",
-            label: "Value: add unit",
+            label: "Value: Overwrite",
             default: `<div>{{ value }}</div>`
         },
         addedUnit: {
             type: "string",
-            label: "Value: Overwrite",
+            label: "Value: add unit",
             default: ``
         },
         measureText: {
@@ -73,9 +73,9 @@ looker.plugins.visualizations.add({
             htmlForCell = parseInt(htmlForCell);
         }
 
-        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
+        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell) +;
 
-        element.innerHTML = htmlFormatted + config.addedUnit;
+        element.innerHTML = htmlFormatted + "<div style='float: left;'>" + config.addedUnit + "</div>";
 
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.color = "#F7F7F7";
