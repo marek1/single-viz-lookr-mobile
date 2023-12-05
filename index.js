@@ -62,8 +62,9 @@ looker.plugins.visualizations.add({
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
-
-        if (!isNaN(htmlForCell))  {
+        let isNumber = false;
+        if (!isNaN(htmlForCell)) {
+            isNumber = true;
             htmlForCell = parseInt(htmlForCell);
         }
 
@@ -84,7 +85,6 @@ looker.plugins.visualizations.add({
         element.style.textAlign = "center";
 
         if (config.measureText) {
-
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
         } else {
             element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like[0].label_short  || qFields.measure_like[0].label_short + "</div>";
