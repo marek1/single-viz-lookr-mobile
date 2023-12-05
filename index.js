@@ -73,13 +73,18 @@ looker.plugins.visualizations.add({
         let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
         let secondCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
 
+        let thirdCell = secondRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
+        let fourthCell = secondRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[1].name : qFields.measure_like[1].name];
+
 
         let htmlForCell = "";
         let htmlForCell1 = LookerCharts.Utils.filterableValueForCell(firstCell);
         let htmlForCell2 = LookerCharts.Utils.filterableValueForCell(secondCell);
 
-        element.innerHTML = "1 : " + htmlForCell1;
-        element.innerHTML += "2 : " + htmlForCell2;
+        element.innerHTML = "1/1 : " + LookerCharts.Utils.filterableValueForCell(firstCell);
+        element.innerHTML += "1/2 : " + LookerCharts.Utils.filterableValueForCell(secondCell);
+        element.innerHTML = "2/1 : " + LookerCharts.Utils.filterableValueForCell(thirdCell);
+        element.innerHTML += "2/2 : " + LookerCharts.Utils.filterableValueForCell(fourthCell);
 /*
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
