@@ -21,6 +21,7 @@ looker.plugins.visualizations.add({
         formatDigits: {
             type: "string",
             label: "Value: Format Digits",
+            section: "Format",
             display: "select",
             values: [
                 {"0": "0"},
@@ -35,21 +36,25 @@ looker.plugins.visualizations.add({
         addedUnit: {
             type: "string",
             label: "Value: Add unit",
+            section: "Format",
             default: ``
         },
         labelText: {
             type: "string",
             label: "Label: Overwrite",
+            section: "Label",
             default: `{{ value }}`
         },
         conditionTxt: {
             type: "string",
             label: "Alert: Indicate when below",
+            section: "Style",
             placeholder: "0"
         },
         textColor: {
             type: "string",
             label: "Text: Color",
+            section: "Style",
             display: "select",
             values: [
                 {"Black": "#333333"},
@@ -63,6 +68,7 @@ looker.plugins.visualizations.add({
         fontSize: {
             type: "string",
             label: "Text: Size",
+            section: "Style",
             display: "select",
             values: [
                 {"Big": "20rem"},
@@ -74,6 +80,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "YOY : which index",
+            section: "Added info",
             default: "0"
         }
     },
