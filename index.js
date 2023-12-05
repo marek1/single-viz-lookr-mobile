@@ -28,17 +28,6 @@ looker.plugins.visualizations.add({
             ],
             default: "Black"
         },
-        verticalAlign:{
-            type: "string",
-            label: "Text Alignment",
-            display: "select",
-            values: [
-                {"Center": "baseline"},
-                {"Top": "text-top"},
-                {"Bottom": "text-bottom"}
-            ],
-            default: "Center"
-        },
         fontSize: {
             type: "string",
             label: "Text Size",
@@ -95,7 +84,6 @@ looker.plugins.visualizations.add({
         element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
-        element.style.verticalAlign = config.verticalAlign;
 
         if (config.measureText) {
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
