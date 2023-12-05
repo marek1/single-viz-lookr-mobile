@@ -79,13 +79,19 @@ looker.plugins.visualizations.add({
         },
         yoyIndex: {
             type: "string",
-            label: "YOY : Select index ",
+            label: "1. YOY : Select index ",
             section: "Subs",
             default: "0"
         },
         momIndex: {
             type: "string",
-            label: "MOM : Select index",
+            label: "2. MOM : Select index",
+            section: "Subs",
+            default: "0"
+        },
+        fromTargetIndex: {
+            type: "string",
+            label: "3. From Target : Select index",
             section: "Subs",
             default: "0"
         }
@@ -167,6 +173,14 @@ looker.plugins.visualizations.add({
         } else {
             momValue = parseFloat(momValue * 100).toFixed(2)
         }
+        // from Target
+        let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.momIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
+        if (isNaN(targetValue)) {
+            targetValue = 0;
+        } else {
+            targetValue = parseFloat(targetValue * 100).toFixed(2)
+        }
+
 
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
@@ -188,6 +202,15 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         }
+        if (targetValue > 0) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + " % </div>";
+        } else if (momValue < 0) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + " % </div>";
+        } else {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
+        }
+
+
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "</div>"
 
