@@ -90,9 +90,9 @@ looker.plugins.visualizations.add({
             htmlForCell = parseInt(htmlForCell2);
         } else {
             isNumber = false;
-            htmlForCell = htmlForCell1 || htmlForCell2;
+            htmlForCell = typeof (htmlForCell1) !== undefined ? htmlForCell1 : htmlForCell2;
         }
-        
+
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
 
         element.innerHTML = htmlFormatted;
