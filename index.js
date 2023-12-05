@@ -138,8 +138,9 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
         // Adding further data
-        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.dimension_like[config.yoyIndex].name ? qFields.dimension_like[config.yoyIndex].name : qFields.measure_like[config.yoyIndex].name]);
-
+        let yoyValue = firstRow[qFields.dimension_like[config.yoyIndex].name ? qFields.dimension_like[config.yoyIndex].name : qFields.measure_like[config.yoyIndex].name]);
+        element.innerHTML += yoyValue;
+/*
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MOM</div>";
@@ -150,7 +151,7 @@ looker.plugins.visualizations.add({
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
         element.innerHTML += "</div>"
-
+*/
         doneRendering();
     }
 });
