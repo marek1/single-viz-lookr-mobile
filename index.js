@@ -3,12 +3,12 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Overwrite value",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         measureText: {
             type: "string",
             label: "Overwrite label",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         conditionTxt: {
             type: "string",
@@ -84,7 +84,7 @@ looker.plugins.visualizations.add({
         element.style.textAlign = "center";
 
         if (config.measureText) {
-            
+
             element.innerHTML += "<div style='font-size: 2rem;'>" + config.measureText + "</div>";
         } else {
             element.innerHTML += "<div style='font-size: 2rem;'>" + qFields.dimension_like[0].label_short  || qFields.measure_like[0].label_short + "</div>";
