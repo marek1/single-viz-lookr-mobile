@@ -149,7 +149,7 @@ looker.plugins.visualizations.add({
         // Adding further data
         let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
         if (isNaN(yoyValue)) {
-            yoyValue = "-";
+            yoyValue = 0;
         } else {
             yoyValue = parseFloat(LookerCharts.Utils.filterableValueForCell(yoyValue) * 100).toFixed(2)
         }
