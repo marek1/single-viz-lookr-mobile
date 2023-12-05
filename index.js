@@ -80,7 +80,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "YOY : which index",
-            section: "Added info",
+            section: "Subs",
             default: "0"
         }
     },
