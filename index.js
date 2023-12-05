@@ -174,7 +174,7 @@ looker.plugins.visualizations.add({
             momValue = parseFloat(momValue * 100).toFixed(2)
         }
         // from Target
-        let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.momIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
+        let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.fromTargetIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
         if (isNaN(targetValue)) {
             targetValue = 0;
         } else {
