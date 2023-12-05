@@ -3,12 +3,12 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Overwrite value",
-            default: `<div>{{ value }}</div>`
+            default: `{{ value }}`
         },
         measureText: {
             type: "string",
             label: "Overwrite label",
-            default: `<div>{{ value }}</div>`
+            default: `{{ value }}`
         },
         conditionTxt: {
             type: "string",
@@ -56,7 +56,6 @@ looker.plugins.visualizations.add({
                 message: `At least one dimension, measure or table calculation needs to be visible.`
             })
         }
-
 
         let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
 
