@@ -148,7 +148,11 @@ looker.plugins.visualizations.add({
 
         // Adding further data
         let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
-        yoyValue = parseFloat(LookerCharts.Utils.filterableValueForCell(yoyValue) * 100).toFixed(2)
+        if (isNaN(yoyValue)) {
+            yoyValue = "-";
+        } else {
+            yoyValue = parseFloat(LookerCharts.Utils.filterableValueForCell(yoyValue) * 100).toFixed(2)
+        }
        // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
        // let yoyValue = firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"];
 
@@ -161,8 +165,10 @@ looker.plugins.visualizations.add({
 
         if (yoyValue > 0) {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + yoyValue + " % </div>";
-        } else {
+        } else if (yoyValue < 0) {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + yoyValue + " % </div>";
+        } else {
+            element.innerHTML = "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         }
 
         element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
