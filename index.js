@@ -70,12 +70,12 @@ looker.plugins.visualizations.add({
         let isNumber = false;
         if (!isNaN(htmlForCell)) {
             isNumber = true;
-            //htmlForCell = parseInt(htmlForCell);
+            htmlForCell = parseInt(htmlForCell);
         }
 
-        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell);
+        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + config.addedUnit);
 
-        element.innerHTML = htmlFormatted + "<div style='float: left;'>" + config.addedUnit + "</div>";
+        element.innerHTML = htmlFormatted;
 
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.color = "#F7F7F7";
