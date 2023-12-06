@@ -91,13 +91,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Text: Size",
             section: "Style",
-            display: "select",
-            values: [
-                {"Big": "100px"},
-                {"Med": "60px"},
-                {"Small": "30px"}
-            ],
-            default: "Med"
+            default: "100"
         },
         yoyLabel: {
             type: "string",
@@ -227,7 +221,7 @@ looker.plugins.visualizations.add({
             element.style.backgroundColor = "#FF0000";
         }
 
-        element.style.fontSize = config.fontSize;
+        element.style.fontSize = config.fontSize+"px";
         element.style.textAlign = "center";
 
         // Adding label
