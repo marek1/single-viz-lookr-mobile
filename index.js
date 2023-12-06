@@ -332,8 +332,10 @@ looker.plugins.visualizations.add({
         }
 
 
-        let valueCell = firstRow[qFields[config.valueDim][config.valueIndex].name];
-        let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
+        let htmlForCell = null;
+        try {
+            htmlForCell = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.valueDim][config.valueIndex].name]);
+        }
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
