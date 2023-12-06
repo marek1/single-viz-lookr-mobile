@@ -1,12 +1,12 @@
 project_name: "single-viz-lookr-mobile"
 
 constant: VIS_LABEL {
-  value: "Single Viz2"
+  value: "Single Viz Lookr Mobile Pro"
   export: override_optional
 }
 
 constant: VIS_ID {
-  value: "single_value-marketplace"
+  value: "single_value_lookr_mobile_pro"
   export:  override_optional
 }
 

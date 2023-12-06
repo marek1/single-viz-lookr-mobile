@@ -79,22 +79,67 @@ looker.plugins.visualizations.add({
         },
         yoyIndex: {
             type: "string",
-            label: "1. YOY : Select index ",
+            label: "1. YoY : Indicate column index",
             section: "Subs",
+            default: "0"
+        },
+        yoyDecimal: {
+            type: "string",
+            label: "1. YoY : Select decimal ",
+            section: "Subs",
+            display: "select",
+            values: [
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
+            ],
             default: "0"
         },
         momIndex: {
             type: "string",
-            label: "2. MOM : Select index",
+            label: "2. MoM : Indicate column index",
             section: "Subs",
+            default: "0"
+        },
+        momDecimal: {
+            type: "string",
+            label: "2. MoM : Select decimal ",
+            section: "Subs",
+            display: "select",
+            values: [
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
+            ],
             default: "0"
         },
         fromTargetIndex: {
             type: "string",
-            label: "3. From Target : Select index",
+            label: "3. From Target : Indicate column index",
             section: "Subs",
             default: "0"
-        }
+        },
+        fromTargetDecimal: {
+            type: "string",
+            label: "3. From Target : Select decimal ",
+            section: "Subs",
+            display: "select",
+            values: [
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
+            ],
+            default: "0"
+        },
     },
 
     create: function(element, config) {},
@@ -164,48 +209,48 @@ looker.plugins.visualizations.add({
         if (isNaN(yoyValue)) {
             yoyValue = 0;
         } else {
-            yoyValue = parseFloat(yoyValue * 100).toFixed(2)
+            yoyValue = parseFloat(yoyValue * 100).toFixed(parseInt(config.yoyDecimal))
         }
         // MOM
         let momValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.momIndex].name ? qFields.measure_like[config.momIndex].name : "-"]);
         if (isNaN(momValue)) {
             momValue = 0;
         } else {
-            momValue = parseFloat(momValue * 100).toFixed(2)
+            momValue = parseFloat(momValue * 100).toFixed(parseInt(config.momDecimal))
         }
         // from Target
         let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.fromTargetIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
         if (isNaN(targetValue)) {
             targetValue = 0;
         } else {
-            targetValue = parseFloat(targetValue * 100).toFixed(2)
+            targetValue = parseFloat(targetValue * 100).toFixed(parseInt(config.fromTargetDecimal))
         }
 
 
         element.innerHTML += "<div style='width:100%; '>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MOM</div>";
+        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MoM</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
         if (yoyValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + yoyValue + " % </div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + yoyValue + "%</div>";
         } else if (yoyValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + yoyValue + " % </div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + yoyValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         }
         if (momValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + momValue + " % </div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + momValue + "%</div>";
         } else if (momValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + momValue + " % </div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + momValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         }
         if (targetValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + " % </div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + "%</div>";
         } else if (targetValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + " % </div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
         }
