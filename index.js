@@ -395,24 +395,27 @@ looker.plugins.visualizations.add({
 
         // Adding Delta
         // YOY:
-        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.yoyDim][config.yoyIndex].name]);
-        if (isNaN(yoyValue)) {
-            yoyValue = 0;
-        } else {
+        let yoyValue = 0;
+        try {
+            yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.yoyDim][config.yoyIndex].name]);
+        } catch (e) {}
+        if (!isNaN(yoyValue)) {
             yoyValue = parseFloat(yoyValue * 100).toFixed(parseInt(config.yoyDecimal))
         }
         // MOM
-        let momValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.momDim][config.momIndex].name]);
-        if (isNaN(momValue)) {
-            momValue = 0;
-        } else {
+        let momValue = 0;
+        try {
+            momValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.momDim][config.momIndex].name]);
+        } catch (e) {}
+        if (!isNaN(momValue)) {
             momValue = parseFloat(momValue * 100).toFixed(parseInt(config.momDecimal))
         }
         // from Target
-        let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.fromTargetDim][config.fromTargetIndex].name]);
-        if (isNaN(targetValue)) {
-            targetValue = 0;
-        } else {
+        let targetValue = 0;
+        try {
+            targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.fromTargetDim][config.fromTargetIndex].name]);
+        } catch (e) {}
+        if (!isNaN(targetValue)) {
             targetValue = parseFloat(targetValue * 100).toFixed(parseInt(config.fromTargetDecimal))
         }
 
@@ -436,23 +439,23 @@ looker.plugins.visualizations.add({
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
         if (yoyValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + "px !important'> ▲ </span>" + yoyValue + "%</div>";
         } else if (yoyValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + "px !important'> ▼ </span>" + yoyValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
         if (momValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + "px !important'> ▲ </span>" + momValue + "%</div>";
         } else if (momValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + "px !important'> ▼ </span>" + momValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
         if (targetValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + "px !important'> ▲ </span>" + targetValue + "%</div>";
         } else if (targetValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + "px !important'> ▼ </span>" + targetValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
