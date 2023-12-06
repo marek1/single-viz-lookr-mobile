@@ -13,7 +13,7 @@ looker.plugins.visualizations.add({
                 {"4": "4"},
                 {"5": "5"},
             ],
-            default: "0"
+            default: "1"
         },
         htmlTemplate: {
             type: "string",
@@ -74,7 +74,7 @@ looker.plugins.visualizations.add({
                 {"4": "4"},
                 {"5": "5"},
             ],
-            default: "-1"
+            default: "0"
         },
 
         labelText: {
@@ -141,7 +141,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Value 1: Set column index",
             section: "Deltas",
-            default: "0"
+            default: "2"
         },
         yoyDecimal: {
             type: "string",
@@ -168,7 +168,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Value 2: Set column index",
             section: "Deltas",
-            default: "0"
+            default: "3"
         },
         momDecimal: {
             type: "string",
@@ -195,7 +195,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Value 3: Set column index",
             section: "Deltas",
-            default: "0"
+            default: "4"
         },
         fromTargetDecimal: {
             type: "string",
