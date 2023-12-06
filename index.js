@@ -230,7 +230,7 @@ looker.plugins.visualizations.add({
             })
         }
 
-        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[config.valueIndex].name : qFields.measure_like[config.valueIndex].name];
+        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[parseInt(config.valueIndex)].name : qFields.measure_like[parseInt(config.valueIndex)].name];
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
