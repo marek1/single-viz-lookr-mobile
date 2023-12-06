@@ -219,8 +219,12 @@ looker.plugins.visualizations.add({
     updateAsync: function(data, element, config, queryResponse, details, doneRendering) {
         this.clearErrors();
 
+
+
         const firstRow = data[0];
         const qFields = queryResponse.fields;
+
+        console.log('qFields: ' , qFields);
 
         if (qFields.dimension_like.length === 0 &&
             qFields.measure_like.length === 0) {
