@@ -102,19 +102,19 @@ looker.plugins.visualizations.add({
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
-            section: "Subs",
+            section: "Deltas",
             default: ``
         },
         yoyIndex: {
             type: "string",
             label: "Value 1: Set column index",
-            section: "Subs",
+            section: "Deltas",
             default: "0"
         },
         yoyDecimal: {
             type: "string",
             label: "Value 1: Set decimals",
-            section: "Subs",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -129,19 +129,19 @@ looker.plugins.visualizations.add({
         momLabel: {
             type: "string",
             label: "Value 2: Overwrite label",
-            section: "Subs",
+            section: "Deltas",
             default: ``
         },
         momIndex: {
             type: "string",
             label: "Value 2: Set column index",
-            section: "Subs",
+            section: "Deltas",
             default: "0"
         },
         momDecimal: {
             type: "string",
             label: "Value 2: Set decimals",
-            section: "Subs",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -156,19 +156,19 @@ looker.plugins.visualizations.add({
         fromTargetLabel: {
             type: "string",
             label: "Value 3: Overwrite label",
-            section: "Subs",
+            section: "Deltas",
             default: ``
         },
         fromTargetIndex: {
             type: "string",
             label: "Value 3: Set column index",
-            section: "Subs",
+            section: "Deltas",
             default: "0"
         },
         fromTargetDecimal: {
             type: "string",
             label: "Value 3: Set decimals",
-            section: "Subs",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -217,8 +217,6 @@ looker.plugins.visualizations.add({
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + config.addedUnit);
 
         element.innerHTML = htmlFormatted;
-
-
         element.style.backgroundColor = config.backgroundColor;
         element.style.color = config.textColor;
 
@@ -229,6 +227,10 @@ looker.plugins.visualizations.add({
 
         element.style.fontSize = config.fontSize+"px";
         element.style.textAlign = "center";
+
+        // TODO: Adding freshness
+        element.innerHTML += "<div style='font-size: 10px; float: right; color: green;'> ♺ </div>";
+
 
         // Adding label
 
@@ -243,7 +245,7 @@ looker.plugins.visualizations.add({
 
         element.innerHTML += "<hr style='margin: 20px 0 20px;'></hr>";
 
-        // Adding
+        // Adding Delta
         // YOY:
         let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"]);
         if (isNaN(yoyValue)) {
