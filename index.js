@@ -103,7 +103,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Value 1: Label",
             section: "Subs",
-            default: `{{ value }}`
+            default: ``
         },
         yoyIndex: {
             type: "string",
