@@ -367,7 +367,7 @@ looker.plugins.visualizations.add({
         if (config.freshnessIconDim !== "none") {
             let freshness = null;
             try {
-                let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.freshnessIconDim][config.freshnessIconIndex].name]);
+                freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.freshnessIconDim][config.freshnessIconIndex].name]);
             } catch (error) {
 
             }
@@ -456,7 +456,7 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
-        
+
         element.innerHTML += "</div>"
 
         doneRendering();
