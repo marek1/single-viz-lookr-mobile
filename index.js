@@ -38,7 +38,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Text: Size",
             section: "Style",
-            default: "100"
+            default: "8vw"
         },
         formatValue: {
             type: "string",
@@ -76,7 +76,7 @@ looker.plugins.visualizations.add({
         freshnessIconDim: {
             type: "string",
             label: "Icon: Pick dimension",
-            section: "Icon",
+            section: "Data Freshness",
             display: "select",
             values: [
                 {"none": "none"},
@@ -89,7 +89,7 @@ looker.plugins.visualizations.add({
         freshnessIconIndex: {
             type: "string",
             label: "Icon: Pick index",
-            section: "Icon",
+            section: "Data Freshness",
             display: "select",
             values: [
                 {"0": "0"},
@@ -112,18 +112,18 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Label: Set font size",
             section: "Label",
-            default: ``
+            default: `5vw`
         },
         conditionTxt: {
             type: "string",
             label: "Alert: Indicate when below",
-            section: "Style",
+            section: "Value",
             placeholder: "0"
         },
         backgroundColor: {
             type: "string",
             label: "Background: Color",
-            section: "Style",
+            section: "Value",
             display: "select",
             values: [
                 {"Orange": "#FF6600"},
@@ -134,7 +134,7 @@ looker.plugins.visualizations.add({
                 {"Grey5": "#CCCCCC"},
                 {"Petrol": "#0996B3"},
                 {"Asphalt": "#333333"},
-                {"White": "#F7F7F7"},
+                {"White": "#FFFFFF"},
                 {"Green": "#86B817"},
                 {"Red": "#E53238"}
             ],
@@ -143,11 +143,11 @@ looker.plugins.visualizations.add({
         textColor: {
             type: "string",
             label: "Text: Color",
-            section: "Style",
+            section: "Value",
             display: "select",
             values: [
                 {"Black": "#333333"},
-                {"White": "#F7F7F7"},
+                {"White": "#FFFFFF"},
                 {"Blue": "#0996B3"},
                 {"Grey": "#E4E4E4"},
                 {"Orange": "#FF6600"},
@@ -159,19 +159,19 @@ looker.plugins.visualizations.add({
         values2FontSize: {
             type: "string",
             label: "Set font size",
-            section: "Values2",
-            default: `20`
+            section: "Comparision",
+            default: `2vw`
         },
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
-            section: "Values2",
+            section: "Comparision",
             default: ``
         },
         yoyDim: {
             type: "string",
             label: "Value 1: Pick dimension",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"none": "none"},
@@ -184,7 +184,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "Value 1: Pick index",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"0": "0"},
@@ -199,7 +199,7 @@ looker.plugins.visualizations.add({
         yoyDecimal: {
             type: "string",
             label: "Value 1: Set decimals",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"0": "0"},
@@ -214,13 +214,13 @@ looker.plugins.visualizations.add({
         momLabel: {
             type: "string",
             label: "Value 2: Overwrite label",
-            section: "Values2",
+            section: "Comparision",
             default: ``
         },
         momDim: {
             type: "string",
             label: "Value 2: Pick dimension",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"none": "none"},
@@ -233,7 +233,7 @@ looker.plugins.visualizations.add({
         momIndex: {
             type: "string",
             label: "Value 2: Pick index",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"0": "0"},
@@ -248,7 +248,7 @@ looker.plugins.visualizations.add({
         momDecimal: {
             type: "string",
             label: "Value 2: Set decimals",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"0": "0"},
@@ -263,13 +263,13 @@ looker.plugins.visualizations.add({
         fromTargetLabel: {
             type: "string",
             label: "Value 3: Overwrite label",
-            section: "Values2",
+            section: "Comparision",
             default: ``
         },
         fromTargetDim: {
             type: "string",
             label: "Value 3: Pick dimension",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"none": "none"},
@@ -282,7 +282,7 @@ looker.plugins.visualizations.add({
         fromTargetIndex: {
             type: "string",
             label: "Value 3: Pick index",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"0": "0"},
@@ -297,7 +297,7 @@ looker.plugins.visualizations.add({
         fromTargetDecimal: {
             type: "string",
             label: "Value 3: Set decimals",
-            section: "Values2",
+            section: "Comparision",
             display: "select",
             values: [
                 {"0": "0"},
@@ -365,7 +365,7 @@ looker.plugins.visualizations.add({
             element.style.backgroundColor = "#FF0000";
         }
 
-        element.style.fontSize = config.fontSize+"px";
+        element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
 
         // Adding freshness
@@ -389,10 +389,10 @@ looker.plugins.visualizations.add({
         // Adding label
 
         if (config.labelText) {
-            element.innerHTML += "<div style='font-size: " + config.labelFontSize + "px;'>" + config.labelText + "</div>";
+            element.innerHTML += "<div style='font-size: " + config.labelFontSize + ";'>" + config.labelText + "</div>";
         } else {
             let labelText =  qFields.dimension_like.length > 0 ? qFields.dimension_like[0].label_short : qFields.measure_like[0].label_short;
-            element.innerHTML += "<div style='font-size: " + config.labelFontSize + "px;'>" + labelText + "</div>";
+            element.innerHTML += "<div style='font-size: " + config.labelFontSize + ";'>" + labelText + "</div>";
         }
 
         // Adding horizontal line
@@ -445,25 +445,25 @@ looker.plugins.visualizations.add({
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
         if (yoyValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + "px !important'> ▲ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + " !important'> ▲ </span>" + yoyValue + "%</div>";
         } else if (yoyValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + "px !important'> ▼ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + " !important'> ▼ </span>" + yoyValue + "%</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
         if (momValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + "px !important'> ▲ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + " !important'> ▲ </span>" + momValue + "%</div>";
         } else if (momValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + "px !important'> ▼ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + " !important'> ▼ </span>" + momValue + "%</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
         if (targetValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + "px !important'> ▲ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + " !important'> ▲ </span>" + targetValue + "%</div>";
         } else if (targetValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + "px !important'> ▼ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + " !important'> ▼ </span>" + targetValue + "%</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
 
         element.innerHTML += "</div>"
