@@ -340,6 +340,7 @@ looker.plugins.visualizations.add({
 
         let isNumber = false;
         if (!isNaN(htmlForCell)) {
+            console.log('htmlForCell 1 : ', htmlForCell);
             isNumber = true;
             htmlForCell = parseInt(htmlForCell);
 
