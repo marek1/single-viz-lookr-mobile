@@ -339,6 +339,7 @@ looker.plugins.visualizations.add({
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
+        console.log('htmlForCell 0 : ', htmlForCell);
         if (!isNaN(htmlForCell)) {
             console.log('htmlForCell 1 : ', htmlForCell);
             isNumber = true;
