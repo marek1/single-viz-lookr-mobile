@@ -230,10 +230,12 @@ looker.plugins.visualizations.add({
             })
         }
 
+        console.log('config.valueIndex : ', config.valueIndex);
         let indexOfValue = 1;
         if (!isNaN(config.valueIndex)) {
             indexOfValue = parseInt(config.valueIndex);
         }
+        console.log('indexOfValue : ', indexOfValue);
 
         let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[indexOfValue].name : qFields.measure_like[indexOfValue].name];
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
