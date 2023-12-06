@@ -156,6 +156,12 @@ looker.plugins.visualizations.add({
             ],
             default: "Black"
         },
+        values2FontSize: {
+            type: "string",
+            label: "Set font size",
+            section: "Values2",
+            default: `20`
+        },
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
@@ -430,29 +436,27 @@ looker.plugins.visualizations.add({
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
         if (yoyValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + yoyValue + "%</div>";
         } else if (yoyValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + yoyValue + "%</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
         if (momValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + momValue + "%</div>";
         } else if (momValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + momValue + "%</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
         if (targetValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:green; float: left; font-size: 2rem !important'> ▲ </span>" + targetValue + "%</div>";
         } else if (targetValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'><span style='color:red; float: left; font-size: 2rem !important'> ▼ </span>" + targetValue + "%</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'>-</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + "px !important'>-</div>";
         }
-
-
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 3rem !important'></div>";
+        
         element.innerHTML += "</div>"
 
         doneRendering();
