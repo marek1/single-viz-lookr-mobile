@@ -1,8 +1,20 @@
 looker.plugins.visualizations.add({
     options: {
+        valueDim: {
+            type: "string",
+            label: "Value: Pick dimension",
+            section: "Value",
+            display: "select",
+            values: [
+                {"dimensions": "dimensions"},
+                {"measures": "measures"},
+                {"table_calculations": "table_calculations"},
+            ],
+            default: "1"
+        },
         valueIndex: {
             type: "string",
-            label: "Value: Overwrite",
+            label: "Value: Pick index",
             section: "Value",
             display: "select",
             values: [
@@ -13,7 +25,7 @@ looker.plugins.visualizations.add({
                 {"4": "4"},
                 {"5": "5"},
             ],
-            default: "1"
+            default: "0"
         },
         htmlTemplate: {
             type: "string",
@@ -234,14 +246,13 @@ looker.plugins.visualizations.add({
             })
         }
 
-        console.log('config.valueIndex : ', config.valueIndex);
-        let indexOfValue = 1;
-        if (!isNaN(config.valueIndex)) {
-            indexOfValue = parseInt(config.valueIndex);
-        }
-        console.log('indexOfValue : ', indexOfValue);
 
-        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[indexOfValue].name : qFields.measure_like[indexOfValue].name];
+        let valueCell = firstRow[qFields[config.valueDim][config.valueIndex].name];
+
+        console.log('config.valueDim : ', config.valueDim);
+        console.log('config.valueIndex : ', config.valueIndex);
+        console.log('valueCell : ', valueCell);
+
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
