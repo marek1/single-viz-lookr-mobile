@@ -6,11 +6,12 @@ looker.plugins.visualizations.add({
             section: "Value",
             display: "select",
             values: [
+                {"none": "none"},
                 {"dimensions": "dimensions"},
                 {"measures": "measures"},
                 {"table_calculations": "table_calculations"},
             ],
-            default: "1"
+            default: "dimensions"
         },
         valueIndex: {
             type: "string",
@@ -72,13 +73,25 @@ looker.plugins.visualizations.add({
             section: "Value",
             default: ``
         },
-        freshnessIcon: {
+        freshnessIconDim: {
             type: "string",
-            label: "Set column index",
+            label: "Icon: Pick dimension",
+            section: "Value",
+            display: "select",
+            values: [
+                {"none": "none"},
+                {"dimensions": "dimensions"},
+                {"measures": "measures"},
+                {"table_calculations": "table_calculations"},
+            ],
+            default: "none"
+        },
+        freshnessIconIndex: {
+            type: "string",
+            label: "Icon: Pick index",
             section: "Icon",
             display: "select",
             values: [
-                {"None": "-1"},
                 {"0": "0"},
                 {"1": "1"},
                 {"2": "2"},
@@ -248,11 +261,6 @@ looker.plugins.visualizations.add({
 
 
         let valueCell = firstRow[qFields[config.valueDim][config.valueIndex].name];
-
-        console.log('config.valueDim : ', config.valueDim);
-        console.log('config.valueIndex : ', config.valueIndex);
-        console.log('valueCell : ', valueCell);
-
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
@@ -284,8 +292,10 @@ looker.plugins.visualizations.add({
 
         // TODO: Adding freshness
 
-        if (parseInt(config.freshnessIcon) >= 0) {
-            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.freshnessIcon].name ? qFields.measure_like[config.freshnessIcon].name : "-"]);
+
+        if (config.freshnessIconDim !== "none") {
+            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[config.freshnessIconDim][config.freshnessIconIndex].name);
+            console.log('freshness : ', freshness);
             if (freshness === "Yes") {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
             } else {
