@@ -94,20 +94,26 @@ looker.plugins.visualizations.add({
             display: "select",
             values: [
                 {"Big": "100px"},
-                {"Med": "50px"},
-                {"Small": "15px"}
+                {"Med": "60px"},
+                {"Small": "30px"}
             ],
             default: "Med"
         },
+        yoyTemplate: {
+            type: "string",
+            label: "Value 1: Label",
+            section: "Subs",
+            default: `{{ value }}`
+        },
         yoyIndex: {
             type: "string",
-            label: "1. YoY : Indicate column index",
+            label: "Value 1: Set column index",
             section: "Subs",
             default: "0"
         },
         yoyDecimal: {
             type: "string",
-            label: "1. YoY : Select decimal ",
+            label: "Value 1: Set decimals",
             section: "Subs",
             display: "select",
             values: [
@@ -122,13 +128,13 @@ looker.plugins.visualizations.add({
         },
         momIndex: {
             type: "string",
-            label: "2. MoM : Indicate column index",
+            label: "Value 2: Set column index",
             section: "Subs",
             default: "0"
         },
         momDecimal: {
             type: "string",
-            label: "2. MoM : Select decimal ",
+            label: "Value 2: Set decimals",
             section: "Subs",
             display: "select",
             values: [
@@ -143,13 +149,13 @@ looker.plugins.visualizations.add({
         },
         fromTargetIndex: {
             type: "string",
-            label: "3. From Target : Indicate column index",
+            label: "Value 3: Set column index",
             section: "Subs",
             default: "0"
         },
         fromTargetDecimal: {
             type: "string",
-            label: "3. From Target : Select decimal ",
+            label: "Value 3: Set decimals",
             section: "Subs",
             display: "select",
             values: [
@@ -250,6 +256,11 @@ looker.plugins.visualizations.add({
 
 
         element.innerHTML += "<div style='width:100%; '>";
+        if (config.yoyTemplate) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.yoyTemplate + "</div>";
+        } else {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
+        }
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MoM</div>";
         element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
