@@ -339,8 +339,9 @@ looker.plugins.visualizations.add({
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
+        let htmlFormatted = "";
         console.log('htmlForCell 0 : ', htmlForCell);
-        if (!isNaN(htmlForCell)) {
+        if (htmlForCell && !isNaN(htmlForCell)) {
             console.log('htmlForCell 1 : ', htmlForCell);
             isNumber = true;
             htmlForCell = parseInt(htmlForCell);
@@ -350,10 +351,10 @@ looker.plugins.visualizations.add({
                 // locale or a string like 'en-US' to override it.
                 { minimumFractionDigits: parseInt(config.formatDigits) }
             );
+
+            htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + config.addedUnit);
         }
 
-        console.log('htmlForCell ', htmlForCell);
-        const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + config.addedUnit);
 
         element.innerHTML = htmlFormatted;
         element.style.backgroundColor = config.backgroundColor;
