@@ -427,46 +427,74 @@ looker.plugins.visualizations.add({
 
 
         element.innerHTML += "<div style='width:100%; '>";
-        if (config.yoyLabel) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.yoyLabel + "</div>";
-        } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>YoY</div>";
-        }
-        if (config.momLabel) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.momLabel + "</div>";
-        } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>MoM</div>";
-        }
+     
         if (config.fromTargetDim != 'none') {
+            if (config.yoyLabel) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.yoyLabel + "</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>YoY</div>";
+            }
+            if (config.momLabel) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.momLabel + "</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>MoM</div>";
+            }
             if (config.fromTargetLabel) {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.fromTargetLabel + "</div>";
             } else {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>from Target</div>";
             }
+        } else {
+            if (config.yoyLabel) {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'>" + config.yoyLabel + "</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'>YoY</div>";
+            }
+            if (config.momLabel) {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'>" + config.momLabel + "</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'>MoM</div>";
+            }
         }
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
-        if (yoyValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + yoyValue + "%</div>";
-        } else if (yoyValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + yoyValue + "%</div>";
-        } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
-        }
-        if (momValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + momValue + "%</div>";
-        } else if (momValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + momValue + "%</div>";
-        } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
-        }
+  
         if (config.fromTargetDim != 'none') {
+                      if (yoyValue > 0) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + yoyValue + "%</div>";
+            } else if (yoyValue < 0) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + yoyValue + "%</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
+            }
+            if (momValue > 0) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + momValue + "%</div>";
+            } else if (momValue < 0) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + momValue + "%</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
+            }
             if (targetValue > 0) {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + targetValue + "%</div>";
             } else if (targetValue < 0) {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + targetValue + "%</div>";
             } else {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
+            }
+        } else {
+            if (yoyValue > 0) {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + yoyValue + "%</div>";
+            } else if (yoyValue < 0) {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + yoyValue + "%</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'>-</div>";
+            }
+            if (momValue > 0) {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + momValue + "%</div>";
+            } else if (momValue < 0) {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + momValue + "%</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:50%; font-size: " + config.values2FontSize + " !important'>-</div>";
             }
         }
         element.innerHTML += "</div>"
