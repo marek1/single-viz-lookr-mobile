@@ -229,9 +229,13 @@ looker.plugins.visualizations.add({
                 message: `At least one dimension, measure or table calculation needs to be visible.`
             })
         }
-        
 
-        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[parseInt(config.valueIndex)].name : qFields.measure_like[parseInt(config.valueIndex)].name];
+        let indexOfValue = 1;
+        if (!isNaN(config.valueIndex)) {
+            indexOfValue = parseInt(config.valueIndex);
+        }
+
+        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[indexOfValue].name : qFields.measure_like[indexOfValue].name];
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
