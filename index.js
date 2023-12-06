@@ -3,8 +3,14 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
-            section: "Overwrite",
+            section: "Value",
             default: `{{ value }}`
+        },
+        fontSize: {
+            type: "string",
+            label: "Text: Size",
+            section: "Value",
+            default: "100"
         },
         formatValue: {
             type: "string",
@@ -92,12 +98,6 @@ looker.plugins.visualizations.add({
                 {"Red": "#E53238"}
             ],
             default: "Black"
-        },
-        fontSize: {
-            type: "string",
-            label: "Text: Size",
-            section: "Style",
-            default: "100"
         },
         yoyLabel: {
             type: "string",
