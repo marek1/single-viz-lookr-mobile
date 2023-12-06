@@ -159,13 +159,13 @@ looker.plugins.visualizations.add({
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
-            section: "V-Deltas",
+            section: "Values2",
             default: ``
         },
         yoyDim: {
             type: "string",
             label: "Value 1: Pick dimension",
-            section: "Value",
+            section: "Values2",
             display: "select",
             values: [
                 {"none": "none"},
@@ -178,7 +178,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "Value 1: Pick index",
-            section: "Value",
+            section: "Values2",
             display: "select",
             values: [
                 {"0": "0"},
@@ -193,7 +193,7 @@ looker.plugins.visualizations.add({
         yoyDecimal: {
             type: "string",
             label: "Value 1: Set decimals",
-            section: "V-Deltas",
+            section: "Values2",
             display: "select",
             values: [
                 {"0": "0"},
@@ -208,13 +208,13 @@ looker.plugins.visualizations.add({
         momLabel: {
             type: "string",
             label: "Value 2: Overwrite label",
-            section: "V-Deltas",
+            section: "Values2",
             default: ``
         },
         momDim: {
             type: "string",
             label: "Value 2: Pick dimension",
-            section: "Value",
+            section: "Values2",
             display: "select",
             values: [
                 {"none": "none"},
@@ -227,7 +227,7 @@ looker.plugins.visualizations.add({
         momIndex: {
             type: "string",
             label: "Value 2: Pick index",
-            section: "Value",
+            section: "Values2",
             display: "select",
             values: [
                 {"0": "0"},
@@ -242,7 +242,7 @@ looker.plugins.visualizations.add({
         momDecimal: {
             type: "string",
             label: "Value 2: Set decimals",
-            section: "V-Deltas",
+            section: "Values2",
             display: "select",
             values: [
                 {"0": "0"},
@@ -257,13 +257,13 @@ looker.plugins.visualizations.add({
         fromTargetLabel: {
             type: "string",
             label: "Value 3: Overwrite label",
-            section: "V-Deltas",
+            section: "Values2",
             default: ``
         },
         fromTargetDim: {
             type: "string",
             label: "Value 3: Pick dimension",
-            section: "Value",
+            section: "Values2",
             display: "select",
             values: [
                 {"none": "none"},
@@ -276,7 +276,7 @@ looker.plugins.visualizations.add({
         fromTargetIndex: {
             type: "string",
             label: "Value 3: Pick index",
-            section: "Value",
+            section: "Values2",
             display: "select",
             values: [
                 {"0": "0"},
@@ -291,7 +291,7 @@ looker.plugins.visualizations.add({
         fromTargetDecimal: {
             type: "string",
             label: "Value 3: Set decimals",
-            section: "V-Deltas",
+            section: "Values2",
             display: "select",
             values: [
                 {"0": "0"},
