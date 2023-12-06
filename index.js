@@ -1,7 +1,7 @@
 looker.plugins.visualizations.add({
     options: {
         valueIndex: {
-            type: "string",
+            type: "number",
             label: "Value: Overwrite",
             section: "Value",
             display: "select",
