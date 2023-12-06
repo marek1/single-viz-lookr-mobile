@@ -350,6 +350,7 @@ looker.plugins.visualizations.add({
             );
         }
 
+        console.log('htmlForCell ', htmlForCell);
         const htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + config.addedUnit);
 
         element.innerHTML = htmlFormatted;
