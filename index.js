@@ -1,22 +1,20 @@
 looker.plugins.visualizations.add({
     options: {
-        /*
-                valueIndex: {
-            type: "number",
+        valueIndex: {
+            type: "string",
             label: "Value: Overwrite",
             section: "Value",
             display: "select",
             values: [
-                {"0": 0},
-                {"1": 1},
-                {"2": 2},
-                {"3": 3},
-                {"4": 4},
-                {"5": 5},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: 0
+            default: "0"
         },
-         */
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
@@ -42,19 +40,19 @@ looker.plugins.visualizations.add({
             default: "de-DE"
         },
         formatDigits: {
-            type: "number",
+            type: "string",
             label: "Value: Format Digits",
             section: "Value",
             display: "select",
             values: [
-                {"0": 0},
-                {"1": 1},
-                {"2": 2},
-                {"3": 3},
-                {"4": 4},
-                {"5": 5},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: 0
+            default: "0"
         },
         addedUnit: {
             type: "string",
@@ -63,20 +61,20 @@ looker.plugins.visualizations.add({
             default: ``
         },
         freshnessIcon: {
-            type: "number",
+            type: "string",
             label: "Set column index",
             section: "Icon",
             display: "select",
             values: [
-                {"None": -1},
-                {"0": 0},
-                {"1": 1},
-                {"2": 2},
-                {"3": 3},
-                {"4": 4},
-                {"5": 5},
+                {"None": "-1"},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: -1
+            default: "-1"
         },
 
         labelText: {
@@ -146,19 +144,19 @@ looker.plugins.visualizations.add({
             default: "0"
         },
         yoyDecimal: {
-            type: "number",
+            type: "string",
             label: "Value 1: Set decimals",
             section: "Deltas",
             display: "select",
             values: [
-                {"0": 0},
-                {"1": 1},
-                {"2": 2},
-                {"3": 3},
-                {"4": 4},
-                {"5": 5},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: 0
+            default: "0"
         },
         momLabel: {
             type: "string",
@@ -173,19 +171,19 @@ looker.plugins.visualizations.add({
             default: "0"
         },
         momDecimal: {
-            type: "number",
+            type: "string",
             label: "Value 2: Set decimals",
             section: "Deltas",
             display: "select",
             values: [
-                {"0": 0},
-                {"1": 1},
-                {"2": 2},
-                {"3": 3},
-                {"4": 4},
-                {"5": 5},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: 0
+            default: "0"
         },
         fromTargetLabel: {
             type: "string",
@@ -200,19 +198,19 @@ looker.plugins.visualizations.add({
             default: "0"
         },
         fromTargetDecimal: {
-            type: "number",
+            type: "string",
             label: "Value 3: Set decimals",
             section: "Deltas",
             display: "select",
             values: [
-                {"0": 0},
-                {"1": 1},
-                {"2": 2},
-                {"3": 3},
-                {"4": 4},
-                {"5": 5},
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
             ],
-            default: 0
+            default: "0"
         },
     },
 
