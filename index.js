@@ -3,13 +3,13 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
-            section: "Value",
+            section: "Format",
             default: `{{ value }}`
         },
         fontSize: {
             type: "string",
             label: "Text: Size",
-            section: "Value",
+            section: "Style",
             default: "100"
         },
         formatValue: {
@@ -229,7 +229,8 @@ looker.plugins.visualizations.add({
         element.style.textAlign = "center";
 
         // TODO: Adding freshness
-        element.innerHTML += "<div style='font-size: 10px; float: right; color: green;'> ♺ </div>";
+
+        element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
 
 
         // Adding label
