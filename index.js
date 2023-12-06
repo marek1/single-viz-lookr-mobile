@@ -99,9 +99,9 @@ looker.plugins.visualizations.add({
             ],
             default: "Med"
         },
-        yoyTemplate: {
+        yoyLabel: {
             type: "string",
-            label: "Value 1: Label",
+            label: "Value 1: Overwrite label",
             section: "Subs",
             default: ``
         },
@@ -126,6 +126,12 @@ looker.plugins.visualizations.add({
             ],
             default: "0"
         },
+        momLabel: {
+            type: "string",
+            label: "Value 2: Overwrite label",
+            section: "Subs",
+            default: ``
+        },
         momIndex: {
             type: "string",
             label: "Value 2: Set column index",
@@ -146,6 +152,12 @@ looker.plugins.visualizations.add({
                 {"5": "5"},
             ],
             default: "0"
+        },
+        fromTargetLabel: {
+            type: "string",
+            label: "Value 3: Overwrite label",
+            section: "Subs",
+            default: ``
         },
         fromTargetIndex: {
             type: "string",
@@ -256,14 +268,21 @@ looker.plugins.visualizations.add({
 
 
         element.innerHTML += "<div style='width:100%; '>";
-        if (config.yoyTemplate) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.yoyTemplate + "</div>";
+        if (config.yoyLabel) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.yoyLabel + "</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
         }
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MoM</div>";
-        element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
+        if (config.momLabel) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.momLabel + "</div>";
+        } else {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MoM</div>";
+        }
+        if (config.fromTargetLabel) {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.fromTargetLabel + "</div>";
+        } else {
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
+        }
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
         if (yoyValue > 0) {
