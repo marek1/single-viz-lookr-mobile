@@ -45,6 +45,12 @@ looker.plugins.visualizations.add({
             section: "Label",
             default: `{{ value }}`
         },
+        labelFontSize: {
+            type: "string",
+            label: "Label: Set font size",
+            section: "Label",
+            default: ``
+        },
         conditionTxt: {
             type: "string",
             label: "Alert: Indicate when below",
@@ -227,10 +233,10 @@ looker.plugins.visualizations.add({
         // Adding label
 
         if (config.labelText) {
-            element.innerHTML += "<div style='font-size: 2rem;'>" + config.labelText + "</div>";
+            element.innerHTML += "<div style='font-size: " + config.labelFontSize + "px;'>" + config.labelText + "</div>";
         } else {
             let labelText =  qFields.dimension_like.length > 0 ? qFields.dimension_like[0].label_short : qFields.measure_like[0].label_short;
-            element.innerHTML += "<div style='font-size: 2rem;'>" + labelText + "</div>";
+            element.innerHTML += "<div style='font-size: " + config.labelFontSize + "px;'>" + labelText + "</div>";
         }
 
         // Adding horizontal line
