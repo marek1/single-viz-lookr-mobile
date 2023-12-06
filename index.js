@@ -9,7 +9,7 @@ looker.plugins.visualizations.add({
         formatValue: {
             type: "string",
             label: "Value: Format",
-            section: "Overwrite",
+            section: "Format",
             display: "select",
             values: [
                 {"de-DE": "de-DE"},
@@ -51,6 +51,26 @@ looker.plugins.visualizations.add({
             section: "Style",
             placeholder: "0"
         },
+        backgroundColor: {
+            type: "string",
+            label: "Background: Color",
+            section: "Style",
+            display: "select",
+            values: [
+                {"Orange": "#FF6600"},
+                {"Grey1": "#636363"},
+                {"Grey2": "#7E7E7E"},
+                {"Grey3": "#999999"},
+                {"Grey4": "#B2B2B2"},
+                {"Grey5": "#CCCCCC"},
+                {"Petrol": "#0996B3"},
+                {"Asphalt": "#333333"},
+                {"White": "#F7F7F7"},
+                {"Green": "#86B817"},
+                {"Red": "#E53238"}
+            ],
+            default: "White"
+        },
         textColor: {
             type: "string",
             label: "Text: Color",
@@ -61,7 +81,9 @@ looker.plugins.visualizations.add({
                 {"White": "#F7F7F7"},
                 {"Blue": "#0996B3"},
                 {"Grey": "#E4E4E4"},
-                {"Orange": "#FF6600"}
+                {"Orange": "#FF6600"},
+                {"Green": "#86B817"},
+                {"Red": "#E53238"}
             ],
             default: "Black"
         },
@@ -71,9 +93,9 @@ looker.plugins.visualizations.add({
             section: "Style",
             display: "select",
             values: [
-                {"Big": "20rem"},
-                {"Med": "10rem"},
-                {"Small": "5rem"}
+                {"Big": "100px"},
+                {"Med": "50px"},
+                {"Small": "15px"}
             ],
             default: "Med"
         },
@@ -178,15 +200,15 @@ looker.plugins.visualizations.add({
 
         element.innerHTML = htmlFormatted;
 
+
+        element.style.backgroundColor = config.backgroundColor;
+        element.style.color = config.textColor;
+
         if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.color = "#F7F7F7";
             element.style.backgroundColor = "#FF0000";
-        } else {
-            element.style.color = "#333333";
-            element.style.backgroundColor = "#F7F7F7";
         }
 
-        element.style.color = config.textColor;
         element.style.fontSize = config.fontSize;
         element.style.textAlign = "center";
 
