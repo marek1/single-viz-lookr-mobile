@@ -437,10 +437,12 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>MoM</div>";
         }
-        if (config.fromTargetLabel) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.fromTargetLabel + "</div>";
-        } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>from Target</div>";
+        if (config.fromTargetDim != 'none') {
+            if (config.fromTargetLabel) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.fromTargetLabel + "</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>from Target</div>";
+            }
         }
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
