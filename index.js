@@ -379,9 +379,9 @@ looker.plugins.visualizations.add({
             }
             console.log('frehsness : ', freshness)
             if (freshness === "Yes") {
-                element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
+                element.innerHTML += "<div style='font-size: 50%; float: right; color: green; margin: 5px;'> ♺ </div>";
             } else if (freshness === "No") {
-                element.innerHTML += "<div style='font-size: 20px; float: right; color: red; margin: 5px;'> ♺ </div>";
+                element.innerHTML += "<div style='font-size: 50%; float: right; color: red; margin: 5px;'> ♺ </div>";
             }
         }
 
@@ -445,23 +445,23 @@ looker.plugins.visualizations.add({
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
         if (yoyValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + " !important'> ▲ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + yoyValue + "%</div>";
         } else if (yoyValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + " !important'> ▼ </span>" + yoyValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + yoyValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
         if (momValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + " !important'> ▲ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + momValue + "%</div>";
         } else if (momValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + " !important'> ▼ </span>" + momValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + momValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
         if (targetValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; float: left; font-size: " + config.values2FontSize + " !important'> ▲ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + targetValue + "%</div>";
         } else if (targetValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; float: left; font-size: " + config.values2FontSize + " !important'> ▼ </span>" + targetValue + "%</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + targetValue + "%</div>";
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
