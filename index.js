@@ -356,15 +356,19 @@ looker.plugins.visualizations.add({
         element.style.fontSize = config.fontSize+"px";
         element.style.textAlign = "center";
 
-        // TODO: Adding freshness
-
+        // Adding freshness
 
         if (config.freshnessIconDim !== "none") {
-            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.freshnessIconDim][config.freshnessIconIndex].name]);
-            console.log('freshness : ', freshness);
+            let freshness = null;
+            try {
+                let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.freshnessIconDim][config.freshnessIconIndex].name]);
+            } catch (error) {
+
+            }
+            console.log('frehsness : ', freshness)
             if (freshness === "Yes") {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
-            } else {
+            } else if (freshness === "No") {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: red; margin: 5px;'> ♺ </div>";
             }
         }
