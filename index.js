@@ -1,5 +1,11 @@
 looker.plugins.visualizations.add({
     options: {
+        valueIndex: {
+            type: "string",
+            label: "Value: Overwrite",
+            section: "Value",
+            default: `{{ value }}`
+        },
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
@@ -25,19 +31,19 @@ looker.plugins.visualizations.add({
             default: "de-DE"
         },
         formatDigits: {
-            type: "string",
+            type: "number",
             label: "Value: Format Digits",
             section: "Value",
             display: "select",
             values: [
-                {"0": "0"},
-                {"1": "1"},
-                {"2": "2"},
-                {"3": "3"},
-                {"4": "4"},
-                {"5": "5"},
+                {"0": 0},
+                {"1": 1},
+                {"2": 2},
+                {"3": 3},
+                {"4": 4},
+                {"5": 5},
             ],
-            default: "0"
+            default: 0
         },
         addedUnit: {
             type: "string",
@@ -129,19 +135,19 @@ looker.plugins.visualizations.add({
             default: "0"
         },
         yoyDecimal: {
-            type: "string",
+            type: "number",
             label: "Value 1: Set decimals",
             section: "Deltas",
             display: "select",
             values: [
-                {"0": "0"},
-                {"1": "1"},
-                {"2": "2"},
-                {"3": "3"},
-                {"4": "4"},
-                {"5": "5"},
+                {"0": 0},
+                {"1": 1},
+                {"2": 2},
+                {"3": 3},
+                {"4": 4},
+                {"5": 5},
             ],
-            default: "0"
+            default: 0
         },
         momLabel: {
             type: "string",
@@ -156,19 +162,19 @@ looker.plugins.visualizations.add({
             default: "0"
         },
         momDecimal: {
-            type: "string",
+            type: "number",
             label: "Value 2: Set decimals",
             section: "Deltas",
             display: "select",
             values: [
-                {"0": "0"},
-                {"1": "1"},
-                {"2": "2"},
-                {"3": "3"},
-                {"4": "4"},
-                {"5": "5"},
+                {"0": 0},
+                {"1": 1},
+                {"2": 2},
+                {"3": 3},
+                {"4": 4},
+                {"5": 5},
             ],
-            default: "0"
+            default: 0
         },
         fromTargetLabel: {
             type: "string",
@@ -183,19 +189,19 @@ looker.plugins.visualizations.add({
             default: "0"
         },
         fromTargetDecimal: {
-            type: "string",
+            type: "number",
             label: "Value 3: Set decimals",
             section: "Deltas",
             display: "select",
             values: [
-                {"0": "0"},
-                {"1": "1"},
-                {"2": "2"},
-                {"3": "3"},
-                {"4": "4"},
-                {"5": "5"},
+                {"0": 0},
+                {"1": 1},
+                {"2": 2},
+                {"3": 3},
+                {"4": 4},
+                {"5": 5},
             ],
-            default: "0"
+            default: 0
         },
     },
 
@@ -215,8 +221,8 @@ looker.plugins.visualizations.add({
             })
         }
 
-        let firstCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
-        let htmlForCell = LookerCharts.Utils.filterableValueForCell(firstCell);
+        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[config.valueIndex].name : qFields.measure_like[config.valueIndex].name];
+        let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
         let isNumber = false;
@@ -249,7 +255,7 @@ looker.plugins.visualizations.add({
 
         if (config.freshnessIcon >= 0) {
             let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.fromTargetIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
-            if (freshness) {
+            if (freshness === "Yes") {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
             } else {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: red; margin: 5px;'> ♺ </div>";
