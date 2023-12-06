@@ -460,14 +460,15 @@ looker.plugins.visualizations.add({
         } else {
             element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
         }
-        if (targetValue > 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + targetValue + "%</div>";
-        } else if (targetValue < 0) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + targetValue + "%</div>";
-        } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
+        if (config.fromTargetDim != 'none') {
+            if (targetValue > 0) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + targetValue + "%</div>";
+            } else if (targetValue < 0) {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:red; font-size: 75% !important'> ▼ </span>" + targetValue + "%</div>";
+            } else {
+                element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>-</div>";
+            }
         }
-
         element.innerHTML += "</div>"
 
         doneRendering();
