@@ -1,6 +1,7 @@
 looker.plugins.visualizations.add({
     options: {
-        valueIndex: {
+        /*
+                valueIndex: {
             type: "number",
             label: "Value: Overwrite",
             section: "Value",
@@ -15,6 +16,7 @@ looker.plugins.visualizations.add({
             ],
             default: 0
         },
+         */
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
@@ -230,7 +232,7 @@ looker.plugins.visualizations.add({
             })
         }
 
-        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[parseInt(config.valueIndex)].name : qFields.measure_like[parseInt(config.valueIndex)].name];
+        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
