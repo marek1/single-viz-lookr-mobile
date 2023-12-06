@@ -37,7 +37,7 @@ looker.plugins.visualizations.add({
         fontSize: {
             type: "string",
             label: "Text: Size",
-            section: "Style",
+            section: "Value",
             default: "8vw"
         },
         formatValue: {
@@ -428,19 +428,19 @@ looker.plugins.visualizations.add({
 
         element.innerHTML += "<div style='width:100%; '>";
         if (config.yoyLabel) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.yoyLabel + "</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 2vw !important'>" + config.yoyLabel + "</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>YoY</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 2vw !important'>YoY</div>";
         }
         if (config.momLabel) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.momLabel + "</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 2vw !important'>" + config.momLabel + "</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>MoM</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 2vw !important'>MoM</div>";
         }
         if (config.fromTargetLabel) {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>" + config.fromTargetLabel + "</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 2vw !important'>" + config.fromTargetLabel + "</div>";
         } else {
-            element.innerHTML += "<div style='float: left; width:33%; font-size: 1rem !important'>from Target</div>";
+            element.innerHTML += "<div style='float: left; width:33%; font-size: 2vw !important'>from Target</div>";
         }
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
