@@ -160,7 +160,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Set font size",
             section: "Comparision",
-            default: `2vw`
+            default: `3vw`
         },
         yoyLabel: {
             type: "string",
