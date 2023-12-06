@@ -230,7 +230,7 @@ looker.plugins.visualizations.add({
             })
         }
 
-        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[0].name : qFields.measure_like[0].name];
+        let valueCell = firstRow[qFields.dimension_like.length > 0 ? qFields.dimension_like[config.valueIndex].name : qFields.measure_like[config.valueIndex].name];
         let htmlForCell = LookerCharts.Utils.filterableValueForCell(valueCell);
         const htmlTemplate = config && config.htmlTemplate || this.options.htmlTemplate.default;
 
@@ -262,8 +262,8 @@ looker.plugins.visualizations.add({
 
         // TODO: Adding freshness
 
-        if (config.freshnessIcon >= 0) {
-            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.fromTargetIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
+        if (parseInt(config.freshnessIcon) >= 0) {
+            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.freshnessIcon].name ? qFields.measure_like[config.freshnessIcon].name : "-"]);
             if (freshness === "Yes") {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
             } else {
