@@ -3,7 +3,7 @@ looker.plugins.visualizations.add({
         htmlTemplate: {
             type: "string",
             label: "Value: Overwrite",
-            section: "Format",
+            section: "Value",
             default: `{{ value }}`
         },
         fontSize: {
@@ -15,7 +15,7 @@ looker.plugins.visualizations.add({
         formatValue: {
             type: "string",
             label: "Value: Format",
-            section: "Format",
+            section: "Value",
             display: "select",
             values: [
                 {"de-DE": "de-DE"},
@@ -27,7 +27,7 @@ looker.plugins.visualizations.add({
         formatDigits: {
             type: "string",
             label: "Value: Format Digits",
-            section: "Format",
+            section: "Value",
             display: "select",
             values: [
                 {"0": "0"},
@@ -42,9 +42,26 @@ looker.plugins.visualizations.add({
         addedUnit: {
             type: "string",
             label: "Value: Add unit",
-            section: "Format",
+            section: "Value",
             default: ``
         },
+        freshnessIcon: {
+            type: "number",
+            label: "Set column index",
+            section: "Icon",
+            display: "select",
+            values: [
+                {"None": -1},
+                {"0": 0},
+                {"1": 1},
+                {"2": 2},
+                {"3": 3},
+                {"4": 4},
+                {"5": 5},
+            ],
+            default: -1
+        },
+
         labelText: {
             type: "string",
             label: "Label: Overwrite",
@@ -230,7 +247,14 @@ looker.plugins.visualizations.add({
 
         // TODO: Adding freshness
 
-        element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
+        if (config.freshnessIcon >= 0) {
+            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.fromTargetIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
+            if (freshness) {
+                element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
+            } else {
+                element.innerHTML += "<div style='font-size: 20px; float: right; color: red; margin: 5px;'> ♺ </div>";
+            }
+        }
 
 
         // Adding label
