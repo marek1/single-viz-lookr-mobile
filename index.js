@@ -159,19 +159,41 @@ looker.plugins.visualizations.add({
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
-            section: "Deltas",
+            section: "V-Deltas",
             default: ``
+        },
+        yoyDim: {
+            type: "string",
+            label: "Value 1: Pick dimension",
+            section: "Value",
+            display: "select",
+            values: [
+                {"none": "none"},
+                {"dimensions": "dimensions"},
+                {"measures": "measures"},
+                {"table_calculations": "table_calculations"},
+            ],
+            default: "dimensions"
         },
         yoyIndex: {
             type: "string",
-            label: "Value 1: Set column index",
-            section: "Deltas",
-            default: "2"
+            label: "Value 1: Pick index",
+            section: "Value",
+            display: "select",
+            values: [
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
+            ],
+            default: "0"
         },
         yoyDecimal: {
             type: "string",
             label: "Value 1: Set decimals",
-            section: "Deltas",
+            section: "V-Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -186,19 +208,41 @@ looker.plugins.visualizations.add({
         momLabel: {
             type: "string",
             label: "Value 2: Overwrite label",
-            section: "Deltas",
+            section: "V-Deltas",
             default: ``
+        },
+        momDim: {
+            type: "string",
+            label: "Value 2: Pick dimension",
+            section: "Value",
+            display: "select",
+            values: [
+                {"none": "none"},
+                {"dimensions": "dimensions"},
+                {"measures": "measures"},
+                {"table_calculations": "table_calculations"},
+            ],
+            default: "dimensions"
         },
         momIndex: {
             type: "string",
-            label: "Value 2: Set column index",
-            section: "Deltas",
-            default: "3"
+            label: "Value 2: Pick index",
+            section: "Value",
+            display: "select",
+            values: [
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
+            ],
+            default: "0"
         },
         momDecimal: {
             type: "string",
             label: "Value 2: Set decimals",
-            section: "Deltas",
+            section: "V-Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -213,19 +257,41 @@ looker.plugins.visualizations.add({
         fromTargetLabel: {
             type: "string",
             label: "Value 3: Overwrite label",
-            section: "Deltas",
+            section: "V-Deltas",
             default: ``
+        },
+        fromTargetDim: {
+            type: "string",
+            label: "Value 3: Pick dimension",
+            section: "Value",
+            display: "select",
+            values: [
+                {"none": "none"},
+                {"dimensions": "dimensions"},
+                {"measures": "measures"},
+                {"table_calculations": "table_calculations"},
+            ],
+            default: "dimensions"
         },
         fromTargetIndex: {
             type: "string",
-            label: "Value 3: Set column index",
-            section: "Deltas",
-            default: "4"
+            label: "Value 3: Pick index",
+            section: "Value",
+            display: "select",
+            values: [
+                {"0": "0"},
+                {"1": "1"},
+                {"2": "2"},
+                {"3": "3"},
+                {"4": "4"},
+                {"5": "5"},
+            ],
+            default: "0"
         },
         fromTargetDecimal: {
             type: "string",
             label: "Value 3: Set decimals",
-            section: "Deltas",
+            section: "V-Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -319,21 +385,21 @@ looker.plugins.visualizations.add({
 
         // Adding Delta
         // YOY:
-        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.yoyIndex].name ? qFields.measure_like[config.yoyIndex].name : "-"]);
+        let yoyValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.yoyDim][config.yoyIndex].name]);
         if (isNaN(yoyValue)) {
             yoyValue = 0;
         } else {
             yoyValue = parseFloat(yoyValue * 100).toFixed(parseInt(config.yoyDecimal))
         }
         // MOM
-        let momValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.momIndex].name ? qFields.measure_like[config.momIndex].name : "-"]);
+        let momValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.momDim][config.momIndex].name]);
         if (isNaN(momValue)) {
             momValue = 0;
         } else {
             momValue = parseFloat(momValue * 100).toFixed(parseInt(config.momDecimal))
         }
         // from Target
-        let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields.measure_like[config.fromTargetIndex].name ? qFields.measure_like[config.fromTargetIndex].name : "-"]);
+        let targetValue = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.fromTargetDim][config.fromTargetIndex].name]);
         if (isNaN(targetValue)) {
             targetValue = 0;
         } else {
