@@ -76,7 +76,7 @@ looker.plugins.visualizations.add({
         freshnessIconDim: {
             type: "string",
             label: "Icon: Pick dimension",
-            section: "Value",
+            section: "Icon",
             display: "select",
             values: [
                 {"none": "none"},
@@ -294,7 +294,7 @@ looker.plugins.visualizations.add({
 
 
         if (config.freshnessIconDim !== "none") {
-            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[config.freshnessIconDim][config.freshnessIconIndex].name);
+            let freshness = LookerCharts.Utils.filterableValueForCell(firstRow[qFields[config.freshnessIconDim][config.freshnessIconIndex].name]);
             console.log('freshness : ', freshness);
             if (freshness === "Yes") {
                 element.innerHTML += "<div style='font-size: 20px; float: right; color: green; margin: 5px;'> ♺ </div>";
