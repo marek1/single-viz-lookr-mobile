@@ -32,7 +32,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Value: Overwrite",
             section: "Value",
-            default: `{{ value }}`
+            default: `<div>{{ value }}</div>`
         },
         fontSize: {
             type: "string",
@@ -83,7 +83,7 @@ looker.plugins.visualizations.add({
         freshnessIconDim: {
             type: "string",
             label: "Icon: Pick dimension",
-            section: "Data Freshness",
+            section: "Icon",
             display: "select",
             values: [
                 {"none": "none"},
@@ -96,7 +96,7 @@ looker.plugins.visualizations.add({
         freshnessIconIndex: {
             type: "string",
             label: "Icon: Pick index",
-            section: "Data Freshness",
+            section: "Icon",
             display: "select",
             values: [
                 {"0": "0"},
@@ -125,7 +125,7 @@ looker.plugins.visualizations.add({
             type: "string",
             label: "Alert: Indicate when below",
             section: "Value",
-            placeholder: "0"
+            default: ""
         },
         backgroundColor: {
             type: "string",
@@ -379,7 +379,7 @@ looker.plugins.visualizations.add({
         element.style.backgroundColor = config.backgroundColor;
         element.style.color = config.textColor;
 
-        if (isNumber && parseInt(config.conditionTxt) > htmlForCell) {
+        if (isNumber && config.conditionTxt && parseInt(config.conditionTxt) > htmlForCell) {
             element.style.color = "#F7F7F7";
             element.style.backgroundColor = "#FF0000";
         }
