@@ -36,7 +36,7 @@ looker.plugins.visualizations.add({
         },
         fontSize: {
             type: "string",
-            label: "Text: Size",
+            label: "Text: Size (+ px, vw, %)",
             section: "Value",
             default: "8vw"
         },
@@ -80,6 +80,10 @@ looker.plugins.visualizations.add({
             ],
             default: "0"
         },
+        freshnessText: {
+            type: "string",
+            label: "Data Freshness",
+        },
         freshnessIconDim: {
             type: "string",
             label: "Icon: Pick dimension",
@@ -117,7 +121,7 @@ looker.plugins.visualizations.add({
         },
         labelFontSize: {
             type: "string",
-            label: "Label: Set font size",
+            label: "Label: Set font size (+ px, vw, %)",
             section: "Label",
             default: `5vw`
         },
@@ -165,20 +169,20 @@ looker.plugins.visualizations.add({
         },
         values2FontSize: {
             type: "string",
-            label: "Set font size",
-            section: "Values",
+            label: "Set font size (+ px, vw, %)",
+            section: "Deltas",
             default: `3vw`
         },
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
-            section: "Values",
+            section: "Deltas",
             default: ``
         },
         yoyDim: {
             type: "string",
             label: "Value 1: Pick dimension",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"none": "none"},
@@ -191,7 +195,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "Value 1: Pick index",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -206,7 +210,7 @@ looker.plugins.visualizations.add({
         yoyDecimal: {
             type: "string",
             label: "Value 1: Set decimals",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -221,13 +225,13 @@ looker.plugins.visualizations.add({
         momLabel: {
             type: "string",
             label: "Value 2: Overwrite label",
-            section: "Values",
+            section: "Deltas",
             default: ``
         },
         momDim: {
             type: "string",
             label: "Value 2: Pick dimension",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"none": "none"},
@@ -240,7 +244,7 @@ looker.plugins.visualizations.add({
         momIndex: {
             type: "string",
             label: "Value 2: Pick index",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -255,7 +259,7 @@ looker.plugins.visualizations.add({
         momDecimal: {
             type: "string",
             label: "Value 2: Set decimals",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -270,13 +274,13 @@ looker.plugins.visualizations.add({
         fromTargetLabel: {
             type: "string",
             label: "Value 3: Overwrite label",
-            section: "Values",
+            section: "Deltas",
             default: ``
         },
         fromTargetDim: {
             type: "string",
             label: "Value 3: Pick dimension",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"none": "none"},
@@ -289,7 +293,7 @@ looker.plugins.visualizations.add({
         fromTargetIndex: {
             type: "string",
             label: "Value 3: Pick index",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -304,7 +308,7 @@ looker.plugins.visualizations.add({
         fromTargetDecimal: {
             type: "string",
             label: "Value 3: Set decimals",
-            section: "Values",
+            section: "Deltas",
             display: "select",
             values: [
                 {"0": "0"},
@@ -355,18 +359,17 @@ looker.plugins.visualizations.add({
             let addedUnit = "";
             if (config.customValue === "thousands") {
                 htmlForCell = htmlForCell / 1000;
-                addedUnit = "k";
+                addedUnit = "K";
             } else if (config.customValue === "millions") {
                 htmlForCell = htmlForCell / 1000000;
-                addedUnit = "m";
+                addedUnit = "M";
             }
 
             if (config.formatValue !== "none") {
                 htmlForCell = htmlForCell.toLocaleString(
-                    config.formatValue, // leave undefined to use the visitor's browser
-                    // locale or a string like 'en-US' to override it.
-                    { minimumFractionDigits: parseInt(config.formatDigits) }
+                    config.formatValue
                 );
+                htmlForCell = parseFloat(htmlForCell).toFixed(config.formatDigits);
             } else {
                 htmlForCell = parseInt(htmlForCell).toFixed(0);
             }
@@ -397,9 +400,9 @@ looker.plugins.visualizations.add({
 
             }
             if (freshness === "Yes") {
-                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: green; right: 10px; top: 10px;'> ⛁ </div>";
+                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: green; right: 15px; top: 10px;'> ⛁ </div>";
             } else if (freshness === "No") {
-                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: red; right: 10px; top: 10px;'> ⛁ </div>";
+                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: red; right: 15px; top: 10px;'> ⛁ </div>";
             }
         }
 
