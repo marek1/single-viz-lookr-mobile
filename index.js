@@ -42,7 +42,7 @@ looker.plugins.visualizations.add({
         },
         formatValue: {
             type: "string",
-            label: "Value: Format",
+            label: "Value: Format as Country",
             section: "Value",
             display: "select",
             values: [
@@ -51,6 +51,18 @@ looker.plugins.visualizations.add({
                 {"en-US": "en-US"},
             ],
             default: "de-DE"
+        },
+        customValue: {
+            type: "string",
+            label: "Value: Format as k/m",
+            section: "Value",
+            display: "select",
+            values: [
+                {"none": "none"},
+                {"thousands": "thousands"},
+                {"millions": "millions"}
+            ],
+            default: "none"
         },
         formatDigits: {
             type: "string",
@@ -66,12 +78,6 @@ looker.plugins.visualizations.add({
                 {"5": "5"},
             ],
             default: "0"
-        },
-        addedUnit: {
-            type: "string",
-            label: "Value: Add unit",
-            section: "Value",
-            default: ``
         },
         freshnessIconDim: {
             type: "string",
@@ -340,11 +346,19 @@ looker.plugins.visualizations.add({
 
         let isNumber = false;
         let htmlFormatted = "-";
-        console.log('htmlForCell 0 : ', htmlForCell);
         if (htmlForCell && !isNaN(htmlForCell)) {
-            console.log('htmlForCell 1 : ', htmlForCell);
             isNumber = true;
+
             htmlForCell = parseInt(htmlForCell);
+
+            let addedUnit = "";
+            if (config.customValue === "thousands") {
+                htmlForCell = htmlForCell / 1000;
+                addedUnit = "k";
+            } else if (config.customValue === "thousands") {
+                htmlForCell = htmlForCell / 1000000;
+                addedUnit = "m";
+            }
 
             htmlForCell = htmlForCell.toLocaleString(
                 config.formatValue, // leave undefined to use the visitor's browser
@@ -352,9 +366,8 @@ looker.plugins.visualizations.add({
                 { minimumFractionDigits: parseInt(config.formatDigits) }
             );
 
-            htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + config.addedUnit);
+            htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + addedUnit);
         }
-
 
         element.innerHTML = htmlFormatted;
         element.style.backgroundColor = config.backgroundColor;
@@ -427,7 +440,7 @@ looker.plugins.visualizations.add({
 
 
         element.innerHTML += "<div style='width:100%; '>";
-     
+
         if (config.fromTargetDim != 'none') {
             if (config.yoyLabel) {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'>" + config.yoyLabel + "</div>";
@@ -458,7 +471,7 @@ looker.plugins.visualizations.add({
         }
         element.innerHTML += "</div>"
         element.innerHTML += "<div style='width:100%; '>";
-  
+
         if (config.fromTargetDim != 'none') {
                       if (yoyValue > 0) {
                 element.innerHTML += "<div style='float: left; width:33%; font-size: " + config.values2FontSize + " !important'><span style='color:green; font-size: 75% !important'> ▲ </span>" + yoyValue + "%</div>";
