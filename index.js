@@ -374,7 +374,7 @@ looker.plugins.visualizations.add({
                     config.formatValue
                 );
             }
-            
+
             htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + addedUnit);
         }
 
