@@ -332,8 +332,6 @@ looker.plugins.visualizations.add({
         const firstRow = data[0];
         const qFields = queryResponse.fields;
 
-        console.log('qFields: ' , qFields);
-
         if (qFields.dimension_like.length === 0 &&
             qFields.measure_like.length === 0) {
             this.addError({
@@ -370,14 +368,11 @@ looker.plugins.visualizations.add({
             }
 
             if (config.formatValue !== "none") {
-                console.log('config.formatValue : ', config.formatValue);
-                console.log('htmlForCell : ', htmlForCell);
                 let no = parseFloat(htmlForCell);
                 htmlForCell = no.toLocaleString(
                     config.formatValue,
                     { minimumFractionDigits: config.formatDigits }
                 );
-                console.log('htmlForCell : ', htmlForCell);
             }
 
             htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + addedUnit);
