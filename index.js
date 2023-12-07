@@ -46,11 +46,12 @@ looker.plugins.visualizations.add({
             section: "Value",
             display: "select",
             values: [
+                {"none": "none"},
                 {"de-DE": "de-DE"},
                 {"en-EN": "en-EN"},
                 {"en-US": "en-US"},
             ],
-            default: "de-DE"
+            default: "none"
         },
         customValue: {
             type: "string",
@@ -165,19 +166,19 @@ looker.plugins.visualizations.add({
         values2FontSize: {
             type: "string",
             label: "Set font size",
-            section: "Comparision",
+            section: "Values",
             default: `3vw`
         },
         yoyLabel: {
             type: "string",
             label: "Value 1: Overwrite label",
-            section: "Comparision",
+            section: "Values",
             default: ``
         },
         yoyDim: {
             type: "string",
             label: "Value 1: Pick dimension",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"none": "none"},
@@ -190,7 +191,7 @@ looker.plugins.visualizations.add({
         yoyIndex: {
             type: "string",
             label: "Value 1: Pick index",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"0": "0"},
@@ -205,7 +206,7 @@ looker.plugins.visualizations.add({
         yoyDecimal: {
             type: "string",
             label: "Value 1: Set decimals",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"0": "0"},
@@ -220,13 +221,13 @@ looker.plugins.visualizations.add({
         momLabel: {
             type: "string",
             label: "Value 2: Overwrite label",
-            section: "Comparision",
+            section: "Values",
             default: ``
         },
         momDim: {
             type: "string",
             label: "Value 2: Pick dimension",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"none": "none"},
@@ -239,7 +240,7 @@ looker.plugins.visualizations.add({
         momIndex: {
             type: "string",
             label: "Value 2: Pick index",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"0": "0"},
@@ -254,7 +255,7 @@ looker.plugins.visualizations.add({
         momDecimal: {
             type: "string",
             label: "Value 2: Set decimals",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"0": "0"},
@@ -269,13 +270,13 @@ looker.plugins.visualizations.add({
         fromTargetLabel: {
             type: "string",
             label: "Value 3: Overwrite label",
-            section: "Comparision",
+            section: "Values",
             default: ``
         },
         fromTargetDim: {
             type: "string",
             label: "Value 3: Pick dimension",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"none": "none"},
@@ -288,7 +289,7 @@ looker.plugins.visualizations.add({
         fromTargetIndex: {
             type: "string",
             label: "Value 3: Pick index",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"0": "0"},
@@ -303,7 +304,7 @@ looker.plugins.visualizations.add({
         fromTargetDecimal: {
             type: "string",
             label: "Value 3: Set decimals",
-            section: "Comparision",
+            section: "Values",
             display: "select",
             values: [
                 {"0": "0"},
@@ -360,11 +361,16 @@ looker.plugins.visualizations.add({
                 addedUnit = "m";
             }
 
-            htmlForCell = htmlForCell.toLocaleString(
-                config.formatValue, // leave undefined to use the visitor's browser
-                // locale or a string like 'en-US' to override it.
-                { minimumFractionDigits: parseInt(config.formatDigits) }
-            );
+            if (config.formatValue !== "none") {
+                htmlForCell = htmlForCell.toLocaleString(
+                    config.formatValue, // leave undefined to use the visitor's browser
+                    // locale or a string like 'en-US' to override it.
+                    { minimumFractionDigits: parseInt(config.formatDigits) }
+                );
+            } else {
+                htmlForCell = parseInt(htmlForCell).toFixed(0);
+            }
+
 
             htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + addedUnit);
         }
@@ -390,7 +396,6 @@ looker.plugins.visualizations.add({
             } catch (error) {
 
             }
-            console.log('frehsness : ', freshness)
             if (freshness === "Yes") {
                 element.innerHTML += "<div style='font-size: 50%; float: right; color: green; margin: 5px;'> ♺ </div>";
             } else if (freshness === "No") {
