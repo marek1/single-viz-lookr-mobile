@@ -370,10 +370,13 @@ looker.plugins.visualizations.add({
             }
 
             if (config.formatValue !== "none") {
+                console.log('config.formatValue : ', config.formatValue);
+                console.log('htmlForCell : ', htmlForCell);
                 htmlForCell = htmlForCell.toLocaleString(
                     config.formatValue,
                     { minimumFractionDigits: config.formatDigits }
                 );
+                console.log('htmlForCell : ', htmlForCell);
             }
 
             htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + addedUnit);
