@@ -355,7 +355,7 @@ looker.plugins.visualizations.add({
             if (config.customValue === "thousands") {
                 htmlForCell = htmlForCell / 1000;
                 addedUnit = "k";
-            } else if (config.customValue === "thousands") {
+            } else if (config.customValue === "millions") {
                 htmlForCell = htmlForCell / 1000000;
                 addedUnit = "m";
             }
