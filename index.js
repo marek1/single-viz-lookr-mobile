@@ -397,9 +397,9 @@ looker.plugins.visualizations.add({
 
             }
             if (freshness === "Yes") {
-                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: green; right: 5px; top: 5px;'> ♺ </div>";
+                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: green; right: 5px; top: 5px;'> ⛁ </div>";
             } else if (freshness === "No") {
-                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: red; right: 5px; top: 5'> ♺ </div>";
+                element.innerHTML += "<div style='font-size: 50%; position: absolute; color: red; right: 5px; top: 5px;'> ⛁ </div>";
             }
         }
 
