@@ -369,9 +369,12 @@ looker.plugins.visualizations.add({
                 htmlForCell = htmlForCell.toLocaleString(
                     config.formatValue
                 );
-                htmlForCell = parseFloat(htmlForCell).toFixed(config.formatDigits);
             } else {
                 htmlForCell = parseInt(htmlForCell).toFixed(0);
+            }
+
+            if (config.formatDigits) {
+                htmlForCell = parseFloat(htmlForCell).toFixed(config.formatDigits);
             }
 
 
