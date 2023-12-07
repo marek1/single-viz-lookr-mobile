@@ -364,18 +364,17 @@ looker.plugins.visualizations.add({
                 htmlForCell = htmlForCell / 1000000;
                 addedUnit = "M";
             }
-/*
+
+            if (config.formatDigits) {
+                htmlForCell = parseFloat(htmlForCell).toFixed(config.formatDigits);
+            }
+
             if (config.formatValue !== "none") {
                 htmlForCell = htmlForCell.toLocaleString(
                     config.formatValue
                 );
             }
-*/
-            if (config.formatDigits) {
-                htmlForCell = parseFloat(htmlForCell).toFixed(config.formatDigits);
-            }
-
-
+            
             htmlFormatted = htmlTemplate.replace(/{{.*}}/g, htmlForCell + " " + addedUnit);
         }
 
