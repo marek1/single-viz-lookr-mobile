@@ -371,7 +371,8 @@ looker.plugins.visualizations.add({
 
             if (config.formatValue !== "none") {
                 htmlForCell = htmlForCell.toLocaleString(
-                    config.formatValue
+                    config.formatValue,
+                    { minimumFractionDigits: config.formatDigits }
                 );
             }
 
