@@ -379,6 +379,7 @@ looker.plugins.visualizations.add({
         }
 
         element.innerHTML = htmlFormatted;
+        element.style.fontFamily = "Gibson,Tahoma,Arial,sans-serif"
         element.style.backgroundColor = config.backgroundColor;
         element.style.color = config.textColor;
 
