@@ -352,7 +352,7 @@ looker.plugins.visualizations.add({
         if (htmlForCell && !isNaN(htmlForCell)) {
             isNumber = true;
 
-            htmlForCell = parseInt(htmlForCell);
+            htmlForCell = parseFloat(htmlForCell);
 
             let addedUnit = "";
             if (config.customValue === "thousands") {
